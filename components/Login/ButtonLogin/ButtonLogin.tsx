@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
-export const ButtonLogin = () =>{
+export const ButtonLogin = (props:any) =>{
     return(
         <View style={styles.button}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{props.setVisible(true)}}>
                 <Text style={styles.text}>LOGIN</Text>
             </TouchableOpacity>
         </View>
