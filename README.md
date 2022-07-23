@@ -1,3 +1,3 @@
-# FlexFiller
+# PanaTracker
 
-React Native app for searching players to fill roles on flex queue in LoL.
+React Native app for tracking your friends' match history in League of Legends.

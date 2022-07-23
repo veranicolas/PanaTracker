@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FlexFiller",
-    "slug": "FlexFiller",
+    "name": "PanaTracker",
+    "slug": "PanaTracker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
