@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 export const ButtonLogin = (props:any) =>{
     return(
         <View style={styles.button}>
-            <TouchableOpacity onPress={()=>{props.setVisible(true)}}>
+            <TouchableOpacity onPress={()=>{props.handleSubmit()}}>
                 <Text style={styles.text}>LOGIN</Text>
             </TouchableOpacity>
         </View>
