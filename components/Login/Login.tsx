@@ -5,7 +5,6 @@ import * as yup from 'yup'
 import { ButtonLogin } from "./ButtonLogin/ButtonLogin"
 
 
-
 export const Login = () =>{
 
     const [visible, setVisible] = useState(false)
@@ -92,8 +91,8 @@ const SubmittedInfo = (props:any) =>{
 const styles = StyleSheet.create({
     loginContainer:{
         height:240,
-        width:'75%',
-        padding:50,
+        width:'95%',
+        padding:30,
         backgroundColor:'#fff',
         borderRadius:12
     },
@@ -119,10 +118,6 @@ const styles = StyleSheet.create({
     inputsErrorText:{
         color:'red',
         paddingLeft:2
-    },
-    button:{
-        backgroundColor:'#403bd9',
-        borderRadius:12
     },
     modalContainer:{
         height:150,
