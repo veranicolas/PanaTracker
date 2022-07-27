@@ -13,7 +13,7 @@ export const ButtonLogin = (props:any) =>{
 const styles = StyleSheet.create({
     button:{
         backgroundColor:'#403bd9',
-        borderRadius:10,
+        borderRadius:6,
         marginTop:10,
         padding:5
     },
