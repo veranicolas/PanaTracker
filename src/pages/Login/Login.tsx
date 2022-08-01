@@ -1,8 +1,11 @@
 import { useState } from "react"
-import { View, Text, TextInput, StyleSheet, Modal, Button} from "react-native"
+import { View, Text, TextInput, StyleSheet, Modal, Button, Image} from "react-native"
 import { Formik } from "formik"
 import * as yup from 'yup'
 import { CustomButton } from "../../components/CustomButton/CustomButton"
+import { LOGO_IMAGE } from "../../assets/images"
+//import { Asset } from "expo-asset"
+//import { CustomText } from "../../components/CustomText/CustomText"
 
 export const Login = () =>{
 
@@ -22,6 +25,11 @@ export const Login = () =>{
 
     return(
         <View style={styles.loginContainer}>
+            {/* <CustomText text="PanaTracker" styles={styles.appTitle}/> */}
+            <Image 
+                style={styles.appLogo}
+                source={LOGO_IMAGE}
+            />
             <Formik
                 initialValues={{email:'', password:''}}
                 onSubmit={values =>{
@@ -89,9 +97,10 @@ const SubmittedInfo = (props:any) =>{
 
 const styles = StyleSheet.create({
     loginContainer:{
-        height:240,
+        justifyContent:'center',
+        height:500,
         width:'95%',
-        padding:30,
+        padding:10,
         backgroundColor:'#fff',
         borderRadius:12
     },
@@ -131,5 +140,18 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'#f2bcb8',
         borderRadius:12,
+    },
+    appTitle:{
+        marginBottom:50,
+        fontSize:24,
+        fontWeight:"bold",
+        textAlign:"center"
+    },
+    appLogo:{
+        width:'100%',
+        height:80,
+        marginBottom:35,
+        
+        borderRadius:15,
     }
 })
