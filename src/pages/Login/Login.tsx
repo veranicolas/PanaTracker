@@ -2,8 +2,7 @@ import { useState } from "react"
 import { View, Text, TextInput, StyleSheet, Modal, Button} from "react-native"
 import { Formik } from "formik"
 import * as yup from 'yup'
-import { ButtonLogin } from "./ButtonLogin/ButtonLogin"
-
+import { CustomButton } from "../../components/CustomButton/CustomButton"
 
 export const Login = () =>{
 
@@ -60,7 +59,7 @@ export const Login = () =>{
                             }
                         </View>
                         
-                        <ButtonLogin handleSubmit={handleSubmit} setVisible={setVisible}/>
+                        <CustomButton title="LOGIN" onPress={handleSubmit} />
                     </>
                 )}
             </Formik>
