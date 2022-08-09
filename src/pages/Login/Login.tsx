@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { View, StyleSheet, Image} from "react-native"
+import { StatusBar } from "expo-status-bar"
 import { useForm } from 'react-hook-form'
 
 import { CustomButton } from "../../components/CustomButton/CustomButton"
@@ -7,9 +8,11 @@ import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { SubmittedInfo } from "./MomentaryModal"
 
 import { LOGO_IMAGE } from "../../assets/images"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
+type Props = NativeStackScreenProps<any,'Login'>
 
-export const Login = () =>{
+export const Login = ({ navigation }:Props) =>{
 
     const [visible, setVisible] = useState(false)
     const [data, setLoginData] = useState({})
@@ -18,7 +21,8 @@ export const Login = () =>{
 
     const onLoginPress = (loginData:any) =>{
         setLoginData(loginData)
-        setVisible(true)
+        console.log(loginData)
+        navigation.navigate('Home')
     }
 
     const onSignupPress = () =>{
@@ -27,33 +31,42 @@ export const Login = () =>{
 
     return(
         <View style={styles.loginContainer}>
-            <Image 
-                style={styles.appLogo}
-                source={LOGO_IMAGE}
-            />
-            <CustomInput 
-                control={control}
-                name="email"
-                placeholder="Email"
-            />
-            <CustomInput
-                control={control}
-                name="password"
-                placeholder="Password"
-                secureTextEntry
-            />            
-            <CustomButton title="LOGIN" onPress={handleSubmit(onLoginPress)} />
-            <CustomButton title="SIGNUP" onPress={onSignupPress} />
-            
-            <SubmittedInfo loginData={data} visible={visible} setVisible={setVisible}/>
+            <View style={styles.formContainer}>
+                <Image 
+                    style={styles.appLogo}
+                    source={LOGO_IMAGE}
+                />
+                <CustomInput 
+                    control={control}
+                    name="email"
+                    placeholder="Email"
+                />
+                <CustomInput
+                    control={control}
+                    name="password"
+                    placeholder="Password"
+                    secureTextEntry
+                />            
+                <CustomButton title="LOGIN" onPress={handleSubmit(onLoginPress)} />
+                <CustomButton title="SIGNUP" onPress={onSignupPress} />
+                
+                <SubmittedInfo loginData={data} visible={visible} setVisible={setVisible}/>
+            </View>
+            <StatusBar backgroundColor='transparent' style="auto" />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     loginContainer:{
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
+    formContainer:{
         justifyContent:'center',
-        height:500,
+        height:420,
         width:'95%',
         padding:10,
         backgroundColor:'#fff',
