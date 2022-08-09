@@ -5,16 +5,13 @@ import { useForm } from 'react-hook-form'
 
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
-import { SubmittedInfo } from "./MomentaryModal"
 
 import { LOGO_IMAGE } from "../../assets/images"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { LoginProps } from "../../models/Props"
 
-type Props = NativeStackScreenProps<any,'Login'>
 
-export const Login = ({ navigation }:Props) =>{
+export const Login = ({ navigation }:LoginProps) =>{
 
-    const [visible, setVisible] = useState(false)
     const [data, setLoginData] = useState({})
 
     const { control, handleSubmit } = useForm()
@@ -26,7 +23,7 @@ export const Login = ({ navigation }:Props) =>{
     }
 
     const onSignupPress = () =>{
-        // TODO ADD navigate to SignUp page
+        navigation.navigate('SignUp')
     }
 
     return(
@@ -49,8 +46,6 @@ export const Login = ({ navigation }:Props) =>{
                 />            
                 <CustomButton title="LOGIN" onPress={handleSubmit(onLoginPress)} />
                 <CustomButton title="SIGNUP" onPress={onSignupPress} />
-                
-                <SubmittedInfo loginData={data} visible={visible} setVisible={setVisible}/>
             </View>
             <StatusBar backgroundColor='transparent' style="auto" />
         </View>

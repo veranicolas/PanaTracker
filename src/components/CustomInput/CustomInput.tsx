@@ -1,20 +1,21 @@
 import { TextInput, View, StyleSheet } from "react-native"
 import { Controller } from "react-hook-form"
+import { CustomInputProps } from "../../models/Props"
 
-export const CustomInput = (props:any) =>{
+export const CustomInput = ({control,name,placeholder,secureTextEntry}:CustomInputProps) =>{
     return(
         <Controller
-            control={props.control}
-            name={props.name}
+            control={control}
+            name={name}
             render={({field:{onBlur, onChange, value}})=>
                 <View style={style.inputsContainer}>
                     <TextInput
                         style={style.inputs}
                         value={value}
-                        placeholder={props.placeholder}
+                        placeholder={placeholder}
                         onBlur={onBlur}
                         onChangeText={(value)=>onChange(value)}
-                        secureTextEntry={props.secureTextEntry}
+                        secureTextEntry={secureTextEntry}
                     />
                 </View>
             }

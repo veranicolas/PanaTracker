@@ -1,11 +1,12 @@
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native'
+import { CustomButtomProps } from '../../models/Props'
 
 // TODO ADD styles in props and props types
-export const CustomButton = (props:any) =>{
+export const CustomButton = ({onPress, title}:CustomButtomProps) =>{
     return(
         <View style={styles.button}>
-            <TouchableOpacity onPress={props.onPress}>
-                <Text style={styles.text}>{props.title}</Text>
+            <TouchableOpacity onPress={onPress}>
+                <Text style={styles.text}>{title}</Text>
             </TouchableOpacity>
         </View>
     )

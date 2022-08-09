@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Login } from './src/pages/Login/Login';
 import { Home } from './src/pages/Home/Home';
+import { SignUp } from './src/pages/Signup/Signup';
 
 export default function App() {
 
@@ -23,6 +24,10 @@ export default function App() {
           <Stack.Screen 
             name='Home'
             component={Home}
+          />
+          <Stack.Screen
+            name='SignUp'
+            component={SignUp}
           />
       </Stack.Navigator>
     </NavigationContainer>
