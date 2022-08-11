@@ -7,7 +7,9 @@ type CustomInputProps = {
     control:Control,
     name:string,
     placeholder:string,
-    secureTextEntry?:boolean
+    secureTextEntry?:boolean,
+    rules:{},
+    maxLength:number
 }
 
 type CustomButtomProps = {

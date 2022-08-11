@@ -9,7 +9,6 @@ import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { LOGO_IMAGE } from "../../assets/images"
 import { LoginProps } from "../../models/Props"
 
-
 export const Login = ({ navigation }:LoginProps) =>{
 
     const [data, setLoginData] = useState({})
@@ -37,12 +36,27 @@ export const Login = ({ navigation }:LoginProps) =>{
                     control={control}
                     name="email"
                     placeholder="Email"
+                    rules={{
+                        required:'Email is required.',
+                        pattern:{
+                            value: /\S+@\S+\.\S+/,
+                            message:'Must be a valid email'
+                        }
+                    }}
+                    maxLength={254}
                 />
                 <CustomInput
                     control={control}
                     name="password"
                     placeholder="Password"
                     secureTextEntry
+                    rules={{
+                        required:'Password is required', 
+                        minLength:{
+                            value:8,
+                            message:'Password is too short.'
+                        }}}
+                    maxLength={22}
                 />            
                 <CustomButton title="LOGIN" onPress={handleSubmit(onLoginPress)} />
                 <CustomButton title="SIGNUP" onPress={onSignupPress} />
