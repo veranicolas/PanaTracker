@@ -66,7 +66,7 @@ export const Login = ({ navigation }:LoginProps) =>{
     )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     loginContainer:{
         flex: 1,
         backgroundColor: '#fff',
