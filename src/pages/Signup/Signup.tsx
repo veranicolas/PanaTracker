@@ -15,7 +15,7 @@ export const SignUp = () => {
 
     return(
         <View style={styles.loginContainer}>
-            <View style={[styles.formContainer, {height:400}]}>
+            <View style={[styles.formContainer]}>
                 <CustomInput 
                     control={control}
                     name="email"
