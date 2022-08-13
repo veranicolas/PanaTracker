@@ -6,11 +6,11 @@
 
 > *Have you seen Ferchito's losersQueue? Absolutely hilarious, my bud is already hearing voices.* - Probably me
 
-Have you ever wondered how was you friends' evening playing some competitive games of League of Legends? I have. So I made this app. Mostly for the giggles and the laughts, but mostly for encouring you homies in their grindset in this harmful enviroment.
+Have you ever wondered how was your friend's evening playing some competitive games of League of Legends? I have. So I made this app. Mostly for the chuckles and the laughs, but mostly for encouraging you homies in their grindset in this harmful enviroment.
 
 ### Overview
 
-This React Native App uses the [Expo](https://expo.dev/) platform for running and building the project. It pulls data from the [RiotAPI](https://developer.riotgames.com/docs/portal), and stores the names of your friends in a PostgreSQL database for future datafetching. The premise is simple:
+This React Native App uses the [Expo](https://expo.dev/) platform for running and building the project. The project pulls data from the [RiotAPI](https://developer.riotgames.com/docs/portal), and stores the names of your friends in a PostgreSQL database for future datafetching. The premise is simple:
 - Login/Signup
 - Add your friends by searching their Summoner's Name
 - Check their progress/descention to madness
