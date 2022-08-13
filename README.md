@@ -2,8 +2,6 @@
 
 ## This is a React Native app for tracking your friends' match history in League of Legends.
 
-<hr>
-
 ### Description
 
 > *Have you seen Ferchito's losersQueue? Absolutely hilarious, my bud is already hearing voices.* - Probably me
