@@ -14,13 +14,13 @@ export const CustomButton = ({onPress, title}:CustomButtomProps) =>{
 
 const styles = StyleSheet.create({
     button:{
-        backgroundColor:'#403bd9',
-        borderRadius:6,
+        backgroundColor:'#212121',
+        borderRadius:10,
         marginTop:10,
         padding:10
     },
     text:{
-        color:'white',
+        color:'#ffffff',
         textAlign:'center',
         fontWeight:'700'
     }

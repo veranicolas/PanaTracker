@@ -1,21 +1,35 @@
-import { View } from "react-native"
+import { StyleSheet, View, Text} from "react-native"
 import { useForm } from "react-hook-form"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 
-import { styles } from "../Login/Login"
+import { SignUpProps } from "../../models/Props"
 
-export const SignUp = () => {
+const AppTitle = () =>{
+    return(
+        <View style={styles.appTitleContainer}>
+            <Text style={styles.appTitle}>Welcome!🥳</Text>
+        </View>
+    )
+}
+
+export const SignUp = ({ navigation }:SignUpProps) => {
 
     const { control, handleSubmit } = useForm()
 
     const onPressSignUp = (data:any) =>{
         console.log(data)
+        navigation.navigate('Home')
+    }
+
+    const onPressLogin = () =>{
+        navigation.goBack()
     }
 
     return(
-        <View style={styles.loginContainer}>
-            <View style={[styles.formContainer]}>
+        <View style={styles.signupContainer}>
+            <AppTitle />
+            <View style={styles.formContainer}>
                 <CustomInput 
                     control={control}
                     name="email"
@@ -52,7 +66,40 @@ export const SignUp = () => {
                     maxLength={60}
                 />
                 <CustomButton title="SIGNUP" onPress={handleSubmit(onPressSignUp)}/>
+                <CustomButton title="LOGIN" onPress={onPressLogin}/>
             </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    signupContainer:{
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
+    formContainer:{
+        justifyContent:'flex-start',
+        height:450,
+        width:'95%',
+        padding:10,
+        backgroundColor:'#fff',
+        borderRadius:12
+    },
+    appTitleContainer:{
+        width:'100%',
+        height:230,
+        marginBottom:10,
+        padding:15,
+        backgroundColor:'#bbdefb',
+        justifyContent:'center'
+    },
+    appTitle:{
+        fontSize:48,
+        fontWeight:'bold',
+        textAlign:'left',
+        color:'#000000',
+        paddingHorizontal:5
+    }
+})

@@ -1,13 +1,20 @@
 import { useState } from "react"
-import { View, StyleSheet, Image} from "react-native"
+import { View, StyleSheet, Image, Text} from "react-native"
 import { StatusBar } from "expo-status-bar"
 import { useForm } from 'react-hook-form'
 
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
 
-import { LOGO_IMAGE } from "../../assets/images"
 import { LoginProps } from "../../models/Props"
+
+const AppTitle = () =>{
+    return(
+        <View style={styles.appTitleContainer}>
+            <Text style={styles.appTitle}>PanaTracker👀</Text>
+        </View>
+    )
+}
 
 export const Login = ({ navigation }:LoginProps) =>{
 
@@ -27,11 +34,8 @@ export const Login = ({ navigation }:LoginProps) =>{
 
     return(
         <View style={styles.loginContainer}>
+            <AppTitle />
             <View style={styles.formContainer}>
-                <Image 
-                    style={styles.appLogo}
-                    source={LOGO_IMAGE}
-                />
                 <CustomInput 
                     control={control}
                     name="email"
@@ -66,7 +70,8 @@ export const Login = ({ navigation }:LoginProps) =>{
     )
 }
 
-export const styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
     loginContainer:{
         flex: 1,
         backgroundColor: '#fff',
@@ -74,18 +79,26 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     formContainer:{
-        justifyContent:'center',
-        height:420,
+        justifyContent:'space-evenly',
+        height:250,
         width:'95%',
         padding:10,
         backgroundColor:'#fff',
         borderRadius:12
     },
-    appLogo:{
+    appTitleContainer:{
         width:'100%',
-        height:80,
-        marginBottom:35,
-        
-        borderRadius:15,
+        height:230,
+        marginBottom:10,
+        padding:15,
+        backgroundColor:'#bbdefb',
+        justifyContent:'center'
+    },
+    appTitle:{
+        fontSize:48,
+        fontWeight:'bold',
+        textAlign:'left',
+        color:'#000000',
+        paddingHorizontal:5
     }
 })

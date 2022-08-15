@@ -4,6 +4,8 @@ import { Control } from "react-hook-form"
 
 type LoginProps = NativeStackScreenProps<any,'Login'>
 
+type SignUpProps = NativeStackScreenProps<any,'SignUp'>
+
 type ProfileProps = DrawerScreenProps<any, 'Profile'>
 
 type CustomInputProps = {
@@ -24,5 +26,6 @@ export {
     LoginProps,
     CustomInputProps,
     CustomButtomProps,
-    ProfileProps
+    ProfileProps,
+    SignUpProps
 }

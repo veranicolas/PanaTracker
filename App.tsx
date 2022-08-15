@@ -53,8 +53,7 @@ export default function App() {
             name='SignUp'
             component={SignUp}
             options={{
-              headerTitle:'Welcome aboard!',
-              headerTitleAlign:'center'
+              headerShown:false
             }}
           />
       </Stack.Navigator>
