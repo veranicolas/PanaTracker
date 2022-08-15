@@ -3,8 +3,30 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Login } from './src/pages/Login/Login';
-import { Home, HomeHeader } from './src/pages/Home/Home';
+import { Home } from './src/pages/Home/Home';
 import { SignUp } from './src/pages/Signup/Signup';
+import { Profile } from './src/pages/Profile/Profile';
+
+const HomeStack = () =>{
+
+  const Drawer = createDrawerNavigator()
+
+  return(
+    <Drawer.Navigator initialRouteName='Feed'>
+      <Drawer.Screen
+        name='Feed'
+        component={Home}
+        options={{
+          headerShown:false
+        }}
+      />
+      <Drawer.Screen
+        name='Profile'
+        component={Profile}
+      />
+    </Drawer.Navigator>
+  )
+}
 
 export default function App() {
 
@@ -17,25 +39,22 @@ export default function App() {
             name='Login' 
             component={Login}
             options={{
-              title:'Welcome!',
-              headerTitleAlign:'center',
-              headerTitleStyle:{fontWeight:'500'}
+              headerShown:false
             }}
           />
           <Stack.Screen 
             name='Home'
-            component={Home}
+            component={HomeStack}
             options={{
-              headerTitle:((props)=> <HomeHeader />)
+              headerShown:false
             }}
           />
           <Stack.Screen
             name='SignUp'
             component={SignUp}
             options={{
-              title:'Join us!',
-              headerTitleAlign:'center',
-              headerTitleStyle:{fontWeight:'500'}
+              headerTitle:'Welcome aboard!',
+              headerTitleAlign:'center'
             }}
           />
       </Stack.Navigator>

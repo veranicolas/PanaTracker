@@ -6,7 +6,7 @@
 
 > *Have you seen Ferchito's losersQueue? Absolutely hilarious, my bud is already hearing voices.* - Probably me
 
-Have you ever wondered how was your friend's evening playing some competitive games of League of Legends? I have. So I made this app. Mostly for the chuckles and the laughs, but mostly for encouraging you homies in their grindset in this harmful enviroment.
+Have you ever wondered how was your friend's evening playing some competitive games of League of Legends? I have. So I made this app. Mostly for the chuckles and the laughs, but also for encouraging you homies in their grindset in this harmful enviroment.
 
 ### Overview
 
@@ -14,14 +14,14 @@ This React Native App uses the [Expo](https://expo.dev/) platform for running an
 - Login/Signup
 - Add your friends by searching their Summoner's Name
 - Check their progress/descention to madness
-- Check can also check your progress in your profile!
+- You can also check your progress in your profile!
 
 ### Install and Run
 
 - Clone this repo.
-- npm i this bad boi.
+- `npm i` this bad boi.
 - You'll need the [Expo CLI](https://docs.expo.dev/workflow/expo-cli/) for running the project.
-- npm start
+- `npm start`
 - With Expo you can use [your own device](https://expo.dev/client) (scanning the QR code using the app), an [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/) or an [iOS Emulator(macOS only)](https://docs.expo.dev/workflow/ios-simulator/), depending on your available hardware.
 - Now you have the project running!
 
