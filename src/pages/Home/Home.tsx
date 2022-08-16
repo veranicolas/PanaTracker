@@ -1,21 +1,48 @@
-import { Text, View, StyleSheet } from "react-native"
+import { Text, View, StyleSheet, Dimensions } from "react-native"
+
 import { Shadow } from "react-native-shadow-2"
 import { MaterialIcons } from '@expo/vector-icons';
+import { AddFriends, FriendsList } from "./FriendsList";
 
-export const Home = () =>{
+import { CurrentRankProps, HomeHeaderProps, HomeProps } from "../../models/Props";
+
+const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
+
+    // TODO change icon for summoner icon
+
     return(
-        <View style={styles.homeContainer}>
-            <Shadow style={{width:200, height:200, borderRadius:12}}>
-                <Text style={styles.textShadow}>Hello there!</Text>
-            </Shadow>
+        <View style={styles.header}>
+            <MaterialIcons onPress={onProfilePress} name="account-circle" size={38} color="black" />
+            <Text style={styles.headerTitle}>Hello again!</Text>
         </View>
     )
 }
 
-export const HomeHeader = () =>{
+const CurrentRank = ({width}:CurrentRankProps) =>{
+
     return(
-        <View style={styles.homeHeader}>
-            <MaterialIcons name="account-circle" size={28} color="black" />
+        <Shadow style={{width,height:80, borderRadius:12}}>
+                <Text style={styles.textShadow}>Current Rank:</Text>
+        </Shadow>
+    )
+}
+
+export const Home = ({navigation}:HomeProps) =>{
+
+    // TODO Do the UI components (YourFriends)
+
+    const windowWidth = Dimensions.get('window').width * 0.9
+
+    const onProfilePress = () =>{
+        navigation.toggleDrawer()
+    }
+
+    return(
+        <View style={styles.homeContainer}>
+            <HomeHeader onProfilePress={onProfilePress}/>
+            <CurrentRank width={windowWidth * 0.97}/>
+            <AddFriends width={windowWidth * 0.97} />
+            <FriendsList width={windowWidth}/>
         </View>
     )
 }
@@ -23,17 +50,29 @@ export const HomeHeader = () =>{
 const styles = StyleSheet.create({
     homeContainer:{
         flex:1,
-        flexDirection:'row',
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    homeHeader:{
-        width:300,
-        flexDirection:'row',
-        justifyContent:'flex-end',
-        alignItems:'flex-start'
+        flexDirection:'column',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        width:'100%',
+        paddingVertical:50
     },
     textShadow:{
-        padding:20
+        height:80,
+        fontSize:20,
+        textAlignVertical:'center',
+        paddingHorizontal:20
+    },
+    header:{
+        height:80,
+        width:'100%',
+        paddingHorizontal:23,
+        paddingVertical:10,
+        flexDirection:'row',
+        justifyContent:'flex-start'
+    },
+    headerTitle:{
+        marginHorizontal:10,
+        fontSize:26,
+        fontWeight:'700'
     }
 })

@@ -12,7 +12,12 @@ const HomeStack = () =>{
   const Drawer = createDrawerNavigator()
 
   return(
-    <Drawer.Navigator initialRouteName='Feed'>
+    <Drawer.Navigator 
+      screenOptions={{
+        drawerPosition:'left'
+      }} 
+      initialRouteName='Feed'
+    >
       <Drawer.Screen
         name='Feed'
         component={Home}

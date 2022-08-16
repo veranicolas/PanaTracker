@@ -8,6 +8,16 @@ type SignUpProps = NativeStackScreenProps<any,'SignUp'>
 
 type ProfileProps = DrawerScreenProps<any, 'Profile'>
 
+type HomeProps = DrawerScreenProps<any, 'Feed'>
+
+type HomeHeaderProps = {
+    onProfilePress:()=>any
+}
+
+type CurrentRankProps = {
+    width:number
+}
+
 type CustomInputProps = {
     control:Control,
     name:string,
@@ -22,10 +32,29 @@ type CustomButtomProps = {
     title:string
 }
 
+type FriendItemProps = {
+    width:number,
+    name:string
+}
+
+type FriendListProps = {
+    width:number
+}
+
+type AddFriendsProps = {
+    width:number
+}
+
 export { 
     LoginProps,
     CustomInputProps,
     CustomButtomProps,
     ProfileProps,
-    SignUpProps
+    SignUpProps,
+    HomeProps,
+    HomeHeaderProps,
+    CurrentRankProps,
+    FriendItemProps,
+    FriendListProps,
+    AddFriendsProps
 }
