@@ -38,11 +38,13 @@ type FriendItemProps = {
 }
 
 type FriendListProps = {
-    width:number
+    width:number,
+    friends:string[]
 }
 
 type AddFriendsProps = {
-    width:number
+    width:number,
+    onPressAddFriend:()=>any
 }
 
 export { 

@@ -13,28 +13,33 @@ const FriendItem = ({width, name}:FriendItemProps) =>{
     )
 }
 
-const FriendsList = ({width}:FriendListProps) =>{
-
-    const friends = ['Ferchito', '08', 'Dongarumi', 'Lillia Kuryakin', 'Ferchito', '08', 'Dongarumi', 'Lillia Kuryakin']
+const FriendsList = ({width, friends}:FriendListProps) =>{
 
     const height = Dimensions.get('window').height * 0.5
 
     return(
         <View style={[{height},styles.friendsList]}>
-            <FlatList 
-                data={friends}
-                renderItem={({item})=> <FriendItem width={width} name={item} />}
-            />
+            {
+                friends.length ? 
+                (<FlatList 
+                    data={friends}
+                    renderItem={
+                        ({item})=> <FriendItem width={width} name={item} />
+                    }
+                />) 
+                : 
+                <Text style={{fontSize:24}}>No friends added yet</Text>
+            }
         </View>
     )
 }
 
-const AddFriends = ({width}:AddFriendsProps) =>{
+const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
 
     return(
         <View style={[{width},styles.addFriends]}>
             <Text style={{fontSize:24, fontWeight:'600'}}>Your friends</Text>
-            <MaterialIcons name="person-add" size={38} color="black" />
+            <MaterialIcons onPress={onPressAddFriend} name="person-add" size={38} color="black" />
         </View>
     )
 }
