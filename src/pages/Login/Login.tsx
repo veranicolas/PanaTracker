@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { View, StyleSheet, Image, Text} from "react-native"
+import { View, StyleSheet, Text} from "react-native"
 import { StatusBar } from "expo-status-bar"
 import { useForm } from 'react-hook-form'
 
-import { CustomButton } from "../../components/CustomButton/CustomButton"
-import { CustomInput } from "../../components/CustomInput/CustomInput"
+import { CustomButton, CustomInput } from "../../components/components"
 
 import { LoginProps } from "../../models/Props"
 
