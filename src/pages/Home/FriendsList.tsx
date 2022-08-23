@@ -1,5 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons'
-import { View, Text, FlatList, Dimensions, StyleSheet} from 'react-native'
+import { View, Text, FlatList, Dimensions, StyleSheet, Pressable} from 'react-native'
 import { AddFriendsProps, FriendItemProps, FriendListProps } from '../../models/Props'
 
 const FriendItem = ({width, name}:FriendItemProps) =>{
@@ -17,6 +17,8 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
 
     const height = Dimensions.get('window').height * 0.5
 
+    // REVIEW the keyExtractor should use the summonerID
+
     return(
         <View style={[{height},styles.friendsList]}>
             {
@@ -26,6 +28,9 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
                     renderItem={
                         ({item})=> <FriendItem width={width} name={item} />
                     }
+                    keyExtractor={(item, index)=>{
+                        return (Math.random()*1000).toString()
+                    }}
                 />) 
                 : 
                 <Text style={{fontSize:24}}>No friends added yet</Text>
@@ -37,10 +42,12 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
 const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
 
     return(
-        <View style={[{width},styles.addFriends]}>
-            <Text style={{fontSize:24, fontWeight:'600'}}>Your friends</Text>
-            <MaterialIcons onPress={onPressAddFriend} name="person-add" size={38} color="black" />
-        </View>
+        <Pressable onPress={onPressAddFriend}>
+            <View style={[{width},styles.addFriends]}>
+                <Text style={{fontSize:24, fontWeight:'600'}}>Add your friends</Text>
+                <MaterialIcons name="person-add" size={38} color="black" />
+            </View>
+        </Pressable>
     )
 }
 
