@@ -3,7 +3,7 @@ import { View, StyleSheet, Text} from "react-native"
 import { StatusBar } from "expo-status-bar"
 import { useForm } from 'react-hook-form'
 
-import { CustomButton, CustomInput } from "../../components/components"
+import { CustomButton, CustomInput } from "../../components"
 
 import { LoginProps } from "../../models/Props"
 

@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { Login, Profile, Home, SignUp } from '../pages/pages';
+import { Login, Profile, Home, SignUp } from '../pages';
 
 const HomeStack = () =>{
 
