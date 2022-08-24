@@ -1,10 +1,10 @@
 import axios from "axios"
 
-const URL = 'https://la2.api.riotgames.com'
+const URL = 'http://192.168.0.181:3000/'
 
 const getSummoner = async (summonerName:string) =>{
 
-    const response = await axios.get(`${URL}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=RGAPI-d099fae6-60b5-485a-9695-67693a35560f`)
+    const response = await axios.get(`${URL}summoner?name=${summonerName}`)
     return response.data
 }
 

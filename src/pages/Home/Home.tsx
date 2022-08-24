@@ -36,11 +36,11 @@ export const Home = ({navigation}:HomeProps) =>{
     const [friends, setFriends] = useState<any>([])
 
     const onPressAddFriend = (data:{}) =>{
-
         if(!friends){
             setFriends([data])
         } else {
             setFriends((friends:any) => [...friends, data])
+            console.log(friends)
         }
     }
 
