@@ -11,12 +11,13 @@ import { getSummoner } from "../../services/api"
 const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
 
     const [visible, setVisible] = useState(false)
-    const { control, handleSubmit } = useForm()
+    const {control, handleSubmit, reset} = useForm()
 
     const onPressHandleSubmit = async ({summoner}:any) =>{
         const summonerData = await getSummoner(summoner)
         onPressAddFriend(summonerData)
         setVisible(false)
+        reset()
     }
 
     return(
@@ -30,13 +31,17 @@ const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
                     <CustomInput 
                         control={control}
                         name="summoner"
-                        placeholder="Add your friend."
+                        placeholder="Your friend's summoner name"
                         rules={{
                             required:'You must enter a name'
                         }}
                         maxLength={40}
                     />
-                    <CustomButton onPress={handleSubmit(onPressHandleSubmit)} title="Add friend"/>
+                    <CustomButton onPress={handleSubmit(onPressHandleSubmit)} title="ADD FRIEND"/>
+                    <CustomButton onPress={()=>{
+                        setVisible(false)
+                        reset()
+                    }} title="CANCEL"/>
                 </View>
             </Modal>
         </Pressable>
