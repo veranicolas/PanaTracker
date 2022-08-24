@@ -1,13 +1,16 @@
-import { MaterialIcons } from '@expo/vector-icons'
-import { View, Text, FlatList, Dimensions, StyleSheet, Pressable} from 'react-native'
-import { AddFriendsProps, FriendItemProps, FriendListProps } from '../../models/Props'
+import { View, Text, FlatList, Dimensions, StyleSheet, Image} from 'react-native'
+import { FriendItemProps, FriendListProps } from '../../models/Props'
 
-const FriendItem = ({width, name}:FriendItemProps) =>{
+const FriendItem = ({width, dataItem:{name, profileIconId}}:FriendItemProps) =>{
 
     const itemWidth = width * 0.97
 
     return(
         <View style={[{width:itemWidth}, styles.friendItem]}>
+            <Image
+                style={{height:60, width:60, borderRadius:5, marginVertical:4, marginRight:15}}
+                source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
+            />
             <Text style={{height:70, textAlignVertical:'center'}}>{name}</Text>
         </View>
     )
@@ -26,7 +29,7 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
                 (<FlatList 
                     data={friends}
                     renderItem={
-                        ({item})=> <FriendItem width={width} name={item} />
+                        ({item})=> <FriendItem width={width} dataItem={item} />
                     }
                     keyExtractor={(item, index)=>{
                         return (Math.random()*1000).toString()
@@ -39,18 +42,6 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
     )
 }
 
-const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
-
-    return(
-        <Pressable onPress={onPressAddFriend}>
-            <View style={[{width},styles.addFriends]}>
-                <Text style={{fontSize:24, fontWeight:'600'}}>Add your friends</Text>
-                <MaterialIcons name="person-add" size={38} color="black" />
-            </View>
-        </Pressable>
-    )
-}
-
 const styles = StyleSheet.create({
     friendsList:{
         flexDirection:'column',
@@ -59,6 +50,7 @@ const styles = StyleSheet.create({
         width:'100%',
     },
     friendItem:{
+        flexDirection:'row',
         height:70,
         borderWidth:1, 
         borderRadius:12, 
@@ -66,15 +58,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:20,
         marginVertical:5
     },
-    addFriends:{
-        height:70,
-        padding:20,
-        flexDirection:'row',
-        justifyContent:'space-between',
-        marginVertical:30,
-        borderRadius:8,
-        backgroundColor:'lightblue'
-    }
+    
 })
 
-export { FriendItem, FriendsList, AddFriends}
+export { FriendItem, FriendsList }

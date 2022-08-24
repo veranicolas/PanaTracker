@@ -2,7 +2,8 @@ import { Text, View, StyleSheet, Dimensions } from "react-native"
 
 import { Shadow } from "react-native-shadow-2"
 import { MaterialIcons } from '@expo/vector-icons';
-import { AddFriends, FriendsList } from "./FriendsList";
+import { FriendsList } from "./FriendsList";
+import { AddFriends } from "./AddFriends";
 
 import { CurrentRankProps, HomeHeaderProps, HomeProps } from "../../models/Props";
 import { useState } from "react";
@@ -34,12 +35,13 @@ export const Home = ({navigation}:HomeProps) =>{
 
     const [friends, setFriends] = useState<any>([])
 
-    const onPressAddFriend = () =>{
+    const onPressAddFriend = (data:{}) =>{
+
         if(!friends){
-            setFriends(['Testing'])
-        } else [
-            setFriends((friends:any) => [...friends, 'Testing'])
-        ]
+            setFriends([data])
+        } else {
+            setFriends((friends:any) => [...friends, data])
+        }
     }
 
     const onProfilePress = () =>{
