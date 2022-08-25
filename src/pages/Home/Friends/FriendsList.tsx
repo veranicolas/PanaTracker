@@ -1,20 +1,6 @@
-import { View, Text, FlatList, Dimensions, StyleSheet, Image} from 'react-native'
-import { FriendItemProps, FriendListProps } from '../../models/Props'
-
-const FriendItem = ({width, dataItem:{name, profileIconId}}:FriendItemProps) =>{
-
-    const itemWidth = width * 0.97
-
-    return(
-        <View style={[{width:itemWidth}, styles.friendItem]}>
-            <Image
-                style={{height:60, width:60, borderRadius:5, marginVertical:4, marginRight:15}}
-                source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
-            />
-            <Text style={{height:70, textAlignVertical:'center'}}>{name}</Text>
-        </View>
-    )
-}
+import { View, Text, FlatList, Dimensions, StyleSheet } from 'react-native'
+import { FriendItem } from './FriendItem'
+import { FriendListProps } from '../../../models/Props'
 
 const FriendsList = ({width, friends}:FriendListProps) =>{
 
@@ -61,4 +47,4 @@ const styles = StyleSheet.create({
     
 })
 
-export { FriendItem, FriendsList }
+export { FriendsList }

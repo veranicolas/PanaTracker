@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, Dimensions } from "react-native"
 
 import { Shadow } from "react-native-shadow-2"
 import { MaterialIcons } from '@expo/vector-icons';
-import { FriendsList } from "./FriendsList";
+import { FriendsList } from "./Friends/FriendsList";
 import { AddFriends } from "./AddFriends";
 
 import { CurrentRankProps, HomeHeaderProps, HomeProps } from "../../models/Props";
@@ -40,7 +40,6 @@ export const Home = ({navigation}:HomeProps) =>{
             setFriends([data])
         } else {
             setFriends((friends:any) => [...friends, data])
-            console.log(friends)
         }
     }
 
