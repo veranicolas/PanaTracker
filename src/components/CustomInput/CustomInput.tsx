@@ -1,8 +1,8 @@
-import { TextInput, View, StyleSheet, Text } from "react-native"
+import { TextInput, View, StyleSheet, Text, Dimensions } from "react-native"
 import { Controller } from "react-hook-form"
 import { CustomInputProps } from "../../models/Props"
 
-export const CustomInput = ({control,name,placeholder,secureTextEntry,rules = {}, maxLength}:CustomInputProps) =>{
+export const CustomInput = ({control,name,placeholder,secureTextEntry,rules = {}, maxLength, inputsStyle = style.inputs}:CustomInputProps) =>{
     return(
         <Controller
             control={control}
@@ -10,7 +10,7 @@ export const CustomInput = ({control,name,placeholder,secureTextEntry,rules = {}
             render={({field:{onBlur, onChange, value}, fieldState:{error}})=>
                 <View style={style.inputsContainer}>
                     <TextInput
-                        style={error ? style.inputsError : style.inputs}
+                        style={error ? style.inputsError : inputsStyle}
                         value={value}
                         placeholder={placeholder}
                         onBlur={onBlur}
@@ -32,6 +32,7 @@ const style = StyleSheet.create({
         marginBottom:15
     },
     inputs:{
+        height:40,
         padding:3,
         paddingLeft:6,
 

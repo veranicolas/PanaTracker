@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     appTitle:{
+        marginTop:30,
         fontSize:48,
         fontWeight:'bold',
         textAlign:'left',

@@ -24,7 +24,8 @@ type CustomInputProps = {
     placeholder:string,
     secureTextEntry?:boolean,
     rules:{},
-    maxLength:number
+    maxLength:number,
+    inputsStyle?:{}
 }
 
 type CustomButtomProps = {
