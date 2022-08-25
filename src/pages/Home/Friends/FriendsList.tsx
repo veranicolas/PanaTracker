@@ -6,8 +6,6 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
 
     const height = Dimensions.get('window').height * 0.5
 
-    // REVIEW the keyExtractor should use the summonerID
-
     return(
         <View style={[{height},styles.friendsList]}>
             {
