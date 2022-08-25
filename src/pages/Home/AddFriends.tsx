@@ -1,20 +1,29 @@
-import { View, StyleSheet, Keyboard, Dimensions } from "react-native"
+import { View, StyleSheet, Keyboard, Dimensions, Text } from "react-native"
 import { AddFriendsProps } from "../../models/Props"
 import { MaterialIcons } from "@expo/vector-icons"
 import { useForm } from "react-hook-form"
+import Modal from 'react-native-modal'
 
-import { CustomInput } from "../../components"
+import { CustomButton, CustomInput } from "../../components"
 import { getSummoner } from "../../services/api"
+import { useState } from "react"
 
 const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
 
     const {control, handleSubmit, reset} = useForm()
+    const [visible, setVisible] = useState(false)
 
     const onPressHandleSubmit = async ({summoner}:any) =>{
         const summonerData = await getSummoner(summoner)
-        onPressAddFriend(summonerData)
-        Keyboard.dismiss()
-        reset()
+        if(summonerData.message !== 'Not found'){
+            onPressAddFriend(summonerData)
+            Keyboard.dismiss()
+            reset()
+        } else {
+            Keyboard.dismiss()
+            setVisible(true)
+            reset()
+        }
     }
 
     return(
@@ -32,6 +41,12 @@ const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
             <View style={styles.addFriendButton}>
                 <MaterialIcons onPress={handleSubmit(onPressHandleSubmit)} name="person-add" size={30} color="black" />
             </View>
+            <Modal isVisible={visible}>
+                <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
+                    <Text style={{textAlign:'center'}}>Not found</Text>
+                    <CustomButton title="OK" onPress={()=>setVisible(false)}/>
+                </View>
+            </Modal>
         </View>
     )
 }

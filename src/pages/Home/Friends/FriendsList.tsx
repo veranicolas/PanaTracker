@@ -17,8 +17,8 @@ const FriendsList = ({width, friends}:FriendListProps) =>{
                     renderItem={
                         ({item})=> <FriendItem width={width} dataItem={item} />
                     }
-                    keyExtractor={(item, index)=>{
-                        return (Math.random()*1000).toString()
+                    keyExtractor={(item:any, index)=>{
+                        return item.id
                     }}
                 />) 
                 : 
