@@ -47,6 +47,8 @@ export const Home = ({navigation}:HomeProps) =>{
         navigation.toggleDrawer()
     }
 
+    // REVIEW should I change navigator for homepage to bottomTabs? and have HOME / FRIENDS / PROFILE for simpler and cleaner navigation
+
     return(
         <View style={styles.homeContainer}>
             <HomeHeader onProfilePress={onProfilePress}/>
@@ -64,7 +66,8 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start',
         alignItems:'center',
         width:'100%',
-        paddingVertical:50
+        paddingVertical:50,
+        backgroundColor:'#bfbfbf'
     },
     textShadow:{
         height:80,

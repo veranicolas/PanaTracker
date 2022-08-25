@@ -17,6 +17,9 @@ export const SignUp = ({ navigation }:SignUpProps) => {
 
     const { control, handleSubmit } = useForm()
 
+    // TODO add data to the app's state and display the summonerIcon, name and rank in the homepage
+    // TODO Error handler for summonername not found
+
     const onPressSignUp = (data:any) =>{
         console.log(data)
         navigation.navigate('Home')

@@ -38,7 +38,8 @@ type RiotData = {
     id:string,
     name:string,
     profileIconId:number,
-    summonerLevel:number
+    summonerLevel:number,
+    rankImage:string
 }
 
 type FriendItemProps = {
