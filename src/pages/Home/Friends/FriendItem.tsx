@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         paddingHorizontal:20,
         marginVertical:5,
-        backgroundColor:'white'
+        backgroundColor:'#07020D'
     },
     summonerIcon:{
         height:60, 
@@ -48,19 +48,21 @@ const styles = StyleSheet.create({
         maxWidth:140, 
         overflow:'scroll', 
         textAlign:'left', 
-        textAlignVertical:'center'
+        textAlignVertical:'center',
+        color:'white'
     },
     rankImage:{
         height:90, 
         width:90, 
-        alignSelf:'center'
+        alignSelf:'center',
     },
     unrankedText:{
         height:70, 
         width:90, 
         textAlignVertical:'center', 
         textAlign:'center', 
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'white'
     }
 })
 

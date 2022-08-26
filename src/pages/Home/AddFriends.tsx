@@ -39,7 +39,7 @@ const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
                 inputsStyle={styles.inputFriend}
             />
             <View style={styles.addFriendButton}>
-                <MaterialIcons onPress={handleSubmit(onPressHandleSubmit)} name="person-add" size={30} color="black" />
+                <MaterialIcons onPress={handleSubmit(onPressHandleSubmit)} name="person-add" size={30} color="white" />
             </View>
             <Modal isVisible={visible}>
                 <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
@@ -58,20 +58,20 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        marginVertical:30,
+        marginTop:25,
         borderRadius:8,
     },
     addFriendButton:{
-        backgroundColor:'lightblue', 
+        backgroundColor:'#07020D', 
         height:38, 
-        width:38,
+        width:46,
         marginBottom:15, 
         borderRadius:5, 
         justifyContent:'center', 
         alignItems:'center'
     },
     inputFriend:{
-        width: Dimensions.get('screen').width * 0.75,
+        width: Dimensions.get('screen').width * 0.74,
         height: 38,
         backgroundColor:'white',
         borderRadius:5,

@@ -67,13 +67,16 @@ const styles = StyleSheet.create({
         alignItems:'center',
         width:'100%',
         paddingVertical:50,
-        backgroundColor:'#bfbfbf'
+        backgroundColor:'#F5F5F5'
     },
     textShadow:{
         height:80,
         fontSize:20,
         textAlignVertical:'center',
-        paddingHorizontal:20
+        paddingHorizontal:20,
+        backgroundColor:'#07020D',
+        borderRadius:12,
+        color:'white'
     },
     header:{
         height:80,
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
     headerTitle:{
         marginHorizontal:10,
         fontSize:26,
-        fontWeight:'700'
+        fontWeight:'700',
+        color:'black'
     }
 })
