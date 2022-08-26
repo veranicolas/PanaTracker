@@ -22,6 +22,7 @@ This React Native App uses the [Expo](https://expo.dev/) platform for running an
 - `npm i` this bad boi.
 - You'll need the [Expo CLI](https://docs.expo.dev/workflow/expo-cli/) for running the project.
 - `npm start`
+- You'll need to [clone the backend](https://github.com/veranicolas/PanaTrackerBE) and set it running too, while the app is still in development.
 - With Expo you can use [your own device](https://expo.dev/client) (scanning the QR code using the app), an [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/) or an [iOS Emulator(macOS only)](https://docs.expo.dev/workflow/ios-simulator/), depending on your available hardware.
 - Now you have the project running!
 
@@ -34,7 +35,10 @@ This React Native App uses the [Expo](https://expo.dev/) platform for running an
 - React/React Native
 - Expo
 - [react-native-shadow-2](https://github.com/SrBrahma/react-native-shadow-2)
+- [Redux](https://redux.js.org/)
 - [React Hook Form](https://react-hook-form.com/)
 - [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [React Navigation](https://reactnavigation.org/)
+= [Axios](https://axios-http.com/docs/intro)
 - [Expo Vector Icons](expo/vector-icons)
+- [dotenv](https://www.npmjs.com/package/dotenv)
