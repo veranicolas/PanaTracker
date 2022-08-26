@@ -3,31 +3,29 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Login, Profile, Home, SignUp } from '../pages';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const HomeStack = () =>{
 
-    const Drawer = createDrawerNavigator()
-  
-    return(
-      <Drawer.Navigator 
-        screenOptions={{
-          drawerPosition:'left'
-        }} 
-        initialRouteName='Feed'
-      >
-        <Drawer.Screen
-          name='Feed'
-          component={Home}
-          options={{
-            headerShown:false
-          }}
-        />
-        <Drawer.Screen
-          name='Profile'
-          component={Profile}
-        />
-      </Drawer.Navigator>
-    )
+  // TODO change the navigator for bottomTabsNavigator 
+
+  const Tab = createBottomTabNavigator()
+
+  return(
+    <Tab.Navigator initialRouteName='Feed'>
+      <Tab.Screen
+        name='Feed'
+        component={Home}
+        options={{
+          headerShown:false
+        }}
+      />
+      <Tab.Screen
+        name='Profile'
+        component={Profile}
+      />
+    </Tab.Navigator>
+  )
 }
   
 const MainNavigator = () =>{

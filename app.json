@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "PanaTracker",
-    "slug": "PanaTracker",
+    "slug": "panatracker",
+    "owner": "veraveravera",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,16 +19,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.panatracker.panatracker",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "00ea4647-17b6-4654-8159-fbb237b06574"
+      }
     }
   }
 }

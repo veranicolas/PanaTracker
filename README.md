@@ -39,6 +39,6 @@ This React Native App uses the [Expo](https://expo.dev/) platform for running an
 - [React Hook Form](https://react-hook-form.com/)
 - [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
 - [React Navigation](https://reactnavigation.org/)
-= [Axios](https://axios-http.com/docs/intro)
+- [Axios](https://axios-http.com/docs/intro)
 - [Expo Vector Icons](expo/vector-icons)
 - [dotenv](https://www.npmjs.com/package/dotenv)
