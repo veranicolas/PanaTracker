@@ -1,9 +1,8 @@
 import { useState } from "react"
 import { View, StyleSheet, Text} from "react-native"
-import { StatusBar } from "expo-status-bar"
 import { useForm } from 'react-hook-form'
 
-import { CustomButton, CustomInput } from "../../components"
+import { CustomButton, CustomInput, Status } from "../../components"
 
 import { LoginProps } from "../../models/Props"
 
@@ -64,7 +63,7 @@ export const Login = ({ navigation }:LoginProps) =>{
                 <CustomButton title="LOGIN" onPress={handleSubmit(onLoginPress)} />
                 <CustomButton title="SIGNUP" onPress={onSignupPress} />
             </View>
-            <StatusBar backgroundColor='transparent' style="auto" />
+            <Status style="light"/>
         </View>
     )
 }
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
         height:230,
         marginBottom:10,
         padding:15,
-        backgroundColor:'#bbdefb',
+        backgroundColor:'#07020D',
         justifyContent:'center'
     },
     appTitle:{
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
         fontSize:48,
         fontWeight:'bold',
         textAlign:'left',
-        color:'#000000',
+        color:'white',
         paddingHorizontal:5
     }
 })

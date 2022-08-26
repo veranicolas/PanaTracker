@@ -1,8 +1,7 @@
 import { StyleSheet, View, Text} from "react-native"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { CustomInput } from "../../components/CustomInput/CustomInput"
-import { CustomButton } from "../../components/CustomButton/CustomButton"
+import { CustomInput, CustomButton, Status } from "../../components"
 import Modal from 'react-native-modal'
 
 import { SignUpProps } from "../../models/Props"
@@ -88,6 +87,7 @@ export const SignUp = ({ navigation }:SignUpProps) => {
                     </View>
                 </Modal>
             </View>
+            <Status style="light"/>
         </View>
     )
 }
@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
         height:230,
         marginBottom:10,
         padding:15,
-        backgroundColor:'#bbdefb',
+        backgroundColor:'#07020D',
         justifyContent:'center'
     },
     appTitle:{
         fontSize:48,
         fontWeight:'bold',
         textAlign:'left',
-        color:'#000000',
+        color:'white',
         paddingHorizontal:5
     }
 })

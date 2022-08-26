@@ -1,11 +1,11 @@
 import { View, StyleSheet, Keyboard, Dimensions, Text } from "react-native"
-import { AddFriendsProps } from "../../models/Props"
+import { AddFriendsProps } from "../../../models/Props"
 import { MaterialIcons } from "@expo/vector-icons"
 import { useForm } from "react-hook-form"
 import Modal from 'react-native-modal'
 
-import { CustomButton, CustomInput } from "../../components"
-import { getSummoner } from "../../services/api"
+import { CustomButton, CustomInput } from "../../../components"
+import { getSummoner } from "../../../services/api"
 import { useState } from "react"
 
 const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
