@@ -1,14 +1,14 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { DrawerScreenProps } from "@react-navigation/drawer"
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
 import { Control } from "react-hook-form"
 
 type LoginProps = NativeStackScreenProps<any,'Login'>
 
 type SignUpProps = NativeStackScreenProps<any,'SignUp'>
 
-type ProfileProps = DrawerScreenProps<any, 'Profile'>
+type ProfileProps = BottomTabScreenProps<any, 'Profile'>
 
-type HomeProps = DrawerScreenProps<any, 'Feed'>
+type HomeProps = BottomTabScreenProps<any, 'Feed'>
 
 type HomeHeaderProps = {
     onProfilePress:()=>any

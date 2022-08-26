@@ -41,7 +41,7 @@ export const Home = ({navigation}:HomeProps) =>{
     }
 
     const onProfilePress = () =>{
-        navigation.toggleDrawer()
+        navigation.navigate('Profile')
     }
 
     // REVIEW should I change navigator for homepage to bottomTabs? and have HOME / FRIENDS / PROFILE for simpler and cleaner navigation
