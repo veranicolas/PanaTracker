@@ -33,7 +33,7 @@ export const SignUp = ({ navigation }:SignUpProps) => {
     const onPressSignUp = async ({summoner}:any) =>{
         const summonerData = await getSummoner(summoner)
         if(summonerData.message !== 'Not found'){
-            dispatch(setProfile(summonerData.name))
+            dispatch(setProfile(summonerData))
             navigation.navigate('Home')
         } else {
             setVisible(true)

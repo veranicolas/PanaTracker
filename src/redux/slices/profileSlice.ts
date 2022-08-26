@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    summonerName: ''
+    summonerData: {}
 }
 
 export const profileSlice = createSlice({
@@ -9,7 +9,7 @@ export const profileSlice = createSlice({
     initialState,
     reducers:{
         setProfile: (state, action) =>{
-            state.summonerName = action.payload
+            state.summonerData = action.payload
         }
     }
 })

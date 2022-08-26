@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Dimensions } from "react-native"
+import { Text, View, StyleSheet, Dimensions, Image } from "react-native"
 
 import { Shadow } from "react-native-shadow-2"
 import { MaterialIcons } from '@expo/vector-icons';
@@ -13,12 +13,17 @@ const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
 
     // TODO change icon for summoner icon
 
-    const summonerName = useSelector((state:any)=> state.profileData.summonerName)
+    const summonerData = useSelector((state:any)=> state.profileData.summonerData)
 
     return(
         <View style={styles.header}>
-            <MaterialIcons onPress={onProfilePress} name="account-circle" size={32} color="black" />
-            <Text style={styles.headerTitle}>{summonerName !== '' ? summonerName : 'you'}</Text>
+            <View style={{height:49, width:49, marginHorizontal:5, backgroundColor:'black', borderRadius:25}}>
+                <Image 
+                    style={{height:45, width:45, borderRadius:25, alignSelf:'center', marginVertical:2}}
+                    source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${summonerData.profileIconId}.png`}}
+                />
+            </View>
+            <Text style={styles.headerTitle}>{summonerData.name ? summonerData.name : 'you'}</Text>
         </View>
     )
 }
@@ -90,6 +95,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start'
     },
     headerTitle:{
+        paddingVertical:5,
         marginHorizontal:10,
         fontSize:22,
         fontWeight:'700',
