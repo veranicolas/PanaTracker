@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text} from "react-native"
-import {  } from 'redux'
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
@@ -8,7 +7,7 @@ import Modal from 'react-native-modal'
 
 import { SignUpProps } from "../../models/Props"
 import { getSummoner } from "../../services/api"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setProfile } from "../../redux/slices/profileSlice"
 
 const AppTitle = () =>{
@@ -21,14 +20,10 @@ const AppTitle = () =>{
 
 export const SignUp = ({ navigation }:SignUpProps) => {
 
-    const summonerName = useSelector((state:any) => state.profileData.summonerName)
     const dispatch = useDispatch()
 
     const [visible, setVisible] = useState(false)
     const { control, handleSubmit } = useForm()
-
-    // TODO add data to the app's state and display the summonerIcon, name and rank in the homepage
-    // TODO Error handler for summonername not found
 
     const onPressSignUp = async ({summoner}:any) =>{
         const summonerData = await getSummoner(summoner)
