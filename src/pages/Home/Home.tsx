@@ -7,15 +7,18 @@ import { AddFriends } from "./AddFriends";
 
 import { CurrentRankProps, HomeHeaderProps, HomeProps } from "../../models/Props";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
 
     // TODO change icon for summoner icon
 
+    const summonerName = useSelector((state:any)=> state.profileData.summonerName)
+
     return(
         <View style={styles.header}>
-            <MaterialIcons onPress={onProfilePress} name="account-circle" size={38} color="black" />
-            <Text style={styles.headerTitle}>Hello again!</Text>
+            <MaterialIcons onPress={onProfilePress} name="account-circle" size={32} color="black" />
+            <Text style={styles.headerTitle}>{summonerName !== '' ? summonerName : 'you'}</Text>
         </View>
     )
 }
@@ -81,14 +84,14 @@ const styles = StyleSheet.create({
     header:{
         height:80,
         width:'100%',
-        paddingHorizontal:23,
+        paddingHorizontal:25,
         paddingVertical:10,
         flexDirection:'row',
         justifyContent:'flex-start'
     },
     headerTitle:{
         marginHorizontal:10,
-        fontSize:26,
+        fontSize:22,
         fontWeight:'700',
         color:'black'
     }

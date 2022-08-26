@@ -1,9 +1,15 @@
 import { StyleSheet, View, Text} from "react-native"
+import {  } from 'redux'
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { CustomButton } from "../../components/CustomButton/CustomButton"
+import Modal from 'react-native-modal'
 
 import { SignUpProps } from "../../models/Props"
+import { getSummoner } from "../../services/api"
+import { useDispatch, useSelector } from "react-redux"
+import { setProfile } from "../../redux/slices/profileSlice"
 
 const AppTitle = () =>{
     return(
@@ -15,14 +21,23 @@ const AppTitle = () =>{
 
 export const SignUp = ({ navigation }:SignUpProps) => {
 
+    const summonerName = useSelector((state:any) => state.profileData.summonerName)
+    const dispatch = useDispatch()
+
+    const [visible, setVisible] = useState(false)
     const { control, handleSubmit } = useForm()
 
     // TODO add data to the app's state and display the summonerIcon, name and rank in the homepage
     // TODO Error handler for summonername not found
 
-    const onPressSignUp = (data:any) =>{
-        console.log(data)
-        navigation.navigate('Home')
+    const onPressSignUp = async ({summoner}:any) =>{
+        const summonerData = await getSummoner(summoner)
+        if(summonerData.message !== 'Not found'){
+            dispatch(setProfile(summonerData.name))
+            navigation.navigate('Home')
+        } else {
+            setVisible(true)
+        }
     }
 
     const onPressLogin = () =>{
@@ -70,6 +85,13 @@ export const SignUp = ({ navigation }:SignUpProps) => {
                 />
                 <CustomButton title="SIGNUP" onPress={handleSubmit(onPressSignUp)}/>
                 <CustomButton title="LOGIN" onPress={onPressLogin}/>
+
+                <Modal isVisible={visible}>
+                    <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
+                        <Text style={{textAlign:'center'}}>Not found</Text>
+                        <CustomButton title="OK" onPress={()=>setVisible(false)}/>
+                    </View>
+                </Modal>
             </View>
         </View>
     )
