@@ -5,7 +5,7 @@ const URL = 'http://192.168.0.181:3000/'
 const getSummoner = async (summonerName:string) =>{
 
     try{
-        const response = await axios.get(`${URL}summoner?name=${summonerName}`)
+        const response = await axios.get(`${URL}summoner/${summonerName}`)
         return response.data
     } catch(error:any){
         return {...error, message:'Not found'}
@@ -13,4 +13,10 @@ const getSummoner = async (summonerName:string) =>{
     
 }
 
-export { getSummoner }
+const getMainChampionSplash = async (summonerID:string) =>{
+
+    const response = await axios.get(`${URL}summoner/champion/${summonerID}`)
+    return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${response.data.name}_0.jpg`
+}
+
+export { getSummoner , getMainChampionSplash}
