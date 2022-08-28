@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react"
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native"
 import { useSelector } from "react-redux"
-import { Status } from "../../components"
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 import { ProfileProps } from "../../models/Props"
-import { getMainChampionSplash } from "../../services/api"
 
 export const Profile = ({ navigation }:ProfileProps) =>{
 
     const summonerData = useSelector((state:any)=> state.profileData.summonerData)
-    
+    const splashData = useSelector((state:any)=> state.mainChampionSplash.splash)
+
+    console.log(splashData)
+
     const onLogoutPress = () =>{
         navigation.navigate('Login')
     }
@@ -20,8 +20,8 @@ export const Profile = ({ navigation }:ProfileProps) =>{
         <View style={styles.mainContainer}>
             <ImageBackground 
                 resizeMode="cover"
-                style={{backgroundColor:'white', width:'100%', height:250, justifyContent:'center', alignItems:'flex-start'}}
-                source={{uri:'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Taliyah_0.jpg'}}
+                style={styles.backgroundImage}
+                source={{uri:splashData}}
             >  
                 <View style={{height:125, width:125, backgroundColor:'white', flexDirection:'column', justifyContent:'center',alignItems:'center', borderRadius:12, marginLeft:10}}>
                     <Image 
@@ -33,7 +33,6 @@ export const Profile = ({ navigation }:ProfileProps) =>{
             </ImageBackground>
 
             <CustomButton title="Logout" onPress={onLogoutPress}/>
-            <Status style="light"/>
         </View>
     )
 }
@@ -48,4 +47,11 @@ const styles = StyleSheet.create({
         paddingBottom:50,
         backgroundColor:'#F5F5F5'
     },
+    backgroundImage:{
+        backgroundColor:'white', 
+        width:'100%', 
+        height:250, 
+        justifyContent:'center', 
+        alignItems:'flex-start'
+    }
 })
