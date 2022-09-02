@@ -3,5 +3,3 @@ TODO - Make friends page, with individual pages for your friends via navigate pa
 TODO - Show wins and loses within certain dates
 TODO - Change to homepage to contain: MVP, Hotstreak, Most games played in the week, The real MVP(most damage to objectives)
 TODO - Add AsyncStorage with redux-persist
-
-TODO - Add error handler for unranked summoner

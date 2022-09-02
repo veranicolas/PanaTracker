@@ -1,9 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { Login, Profile, Home, SignUp } from '../pages';
+import { Login, Profile, Home, SignUp, Friends } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 
 const HomeStack = () =>{
 
@@ -19,6 +19,14 @@ const HomeStack = () =>{
         options={{
           headerShown:false,
           tabBarIcon:()=>(<MaterialIcons name="home" size={24} color="black" />),
+          tabBarShowLabel:false
+        }}
+      />
+      <Tab.Screen 
+        name='Friends'
+        component={Friends}
+        options={{
+          tabBarIcon:()=>(<FontAwesome5 name="user-friends" size={24} color="black" />),
           tabBarShowLabel:false
         }}
       />
