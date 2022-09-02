@@ -16,7 +16,7 @@ const getSummoner = async (summonerName:string) =>{
 const getMainChampionSplash = async (summonerID:string) =>{
 
     const { data } = await axios.get(`${URL}summoner/champion/${summonerID}`)
-    return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.name}_0.jpg`
+    return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`
 }
 
 export { getSummoner , getMainChampionSplash}
