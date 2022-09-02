@@ -8,7 +8,10 @@ const CurrentRank = ({width}:CurrentRankProps) =>{
 
     const summonerData = useSelector((state:any)=> state.profileData.summonerData)
 
-    const rankText = `${summonerData.rankedData[0].leaguePoints}LP   ${summonerData.rankedData[0].rank}`
+    let rankText:string = 'Unranked'
+    if(summonerData.rankedData){
+        rankText = `${summonerData.rankedData[0].leaguePoints}LP   ${summonerData.rankedData[0].rank}`
+    }
 
     return(
         <Shadow style={[{width}, styles.shadowBox]}>
@@ -16,8 +19,19 @@ const CurrentRank = ({width}:CurrentRankProps) =>{
                 <Text style={styles.textShadow}>Current Rank</Text>
                 
                 <View style={{flexDirection:'row', width:'70%', justifyContent:'space-around'}}>
-                    <Text style={styles.rankText}>{rankText}</Text>
-                    <Image style={styles.rankImage} source={{uri:summonerData.rankImage}} />
+                    {
+                        rankText !== 'Unranked' ? 
+                            (<>
+                                <Text style={styles.rankText}>{rankText}</Text>
+                                <Image style={styles.rankImage} source={{uri:summonerData.rankImage}} />
+                            </>)
+                        :
+                        (<>
+                                <Text style={styles.rankText}>{rankText}</Text>
+                                <Image resizeMode='stretch' style={{alignSelf:'center', height:45, width:60}} source={{uri:'https://eloboost24.eu/images/divisions/0.webp'}} />
+                        </>)
+                    }
+                    
                 </View>
             </View>
         </Shadow>
@@ -39,7 +53,7 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         textAlign:'right', 
         textAlignVertical:'center', 
-        fontSize:36, 
+        fontSize:32, 
         width:'65%'
     },
     rankImage:{
