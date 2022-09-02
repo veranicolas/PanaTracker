@@ -1,8 +1,6 @@
 import { Text, View, StyleSheet, Dimensions, Image, Pressable } from "react-native"
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { FriendsList, AddFriends } from "./Friends";
 import { HomeHeaderProps, HomeProps } from "../../models/Props";
 import { Status } from "../../components";
 import { CurrentRank } from "./CurrentRank";
@@ -30,28 +28,14 @@ export const Home = ({navigation}:HomeProps) =>{
 
     const windowWidth = Dimensions.get('window').width * 0.9
 
-    const [friends, setFriends] = useState<any>([])
-
-    const onPressAddFriend = (data:{}) =>{
-        if(!friends){
-            setFriends([data])
-        } else {
-            setFriends((friends:any) => [...friends, data])
-        }
-    }
-
     const onProfilePress = () =>{
         navigation.navigate('Profile')
     }
-
-    // REVIEW should I change navigator for homepage to bottomTabs? and have HOME / FRIENDS / PROFILE for simpler and cleaner navigation
 
     return(
         <View style={styles.homeContainer}>
             <HomeHeader onProfilePress={onProfilePress}/>
             <CurrentRank width={windowWidth * 0.97}/>
-            <AddFriends width={windowWidth * 0.97} onPressAddFriend={onPressAddFriend} />
-            <FriendsList width={windowWidth} friends={friends}/>
             <Status style="dark"/>
         </View>
     )

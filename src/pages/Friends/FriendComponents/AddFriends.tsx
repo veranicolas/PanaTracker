@@ -1,22 +1,28 @@
 import { View, StyleSheet, Keyboard, Dimensions, Text } from "react-native"
-import { AddFriendsProps } from "../../../models/Props"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+
 import { MaterialIcons } from "@expo/vector-icons"
 import { useForm } from "react-hook-form"
 import Modal from 'react-native-modal'
 
+import { AddFriendsProps, RiotUserData } from "../../../models/Props"
 import { CustomButton, CustomInput } from "../../../components"
+import { setFriends } from "../../../redux/slices/friendsSlice"
 import { getSummoner } from "../../../services/api"
-import { useState } from "react"
 
-const AddFriends = ({width, onPressAddFriend}:AddFriendsProps) =>{
+
+const AddFriends = ({width}:AddFriendsProps) =>{
+
+    const dispatch = useDispatch()
 
     const {control, handleSubmit, reset} = useForm()
     const [visible, setVisible] = useState(false)
 
     const onPressHandleSubmit = async ({summoner}:any) =>{
-        const summonerData = await getSummoner(summoner)
+        const summonerData:RiotUserData = await getSummoner(summoner)
         if(summonerData.message !== 'Not found'){
-            onPressAddFriend(summonerData)
+            dispatch(setFriends(summonerData))
             Keyboard.dismiss()
             reset()
         } else {

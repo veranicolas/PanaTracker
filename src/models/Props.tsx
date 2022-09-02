@@ -33,28 +33,28 @@ type CustomButtomProps = {
     title:string
 }
 
-type RiotData = {
+type RiotUserData = {
     accountId:string,
     id:string,
     name:string,
     profileIconId:number,
     summonerLevel:number,
-    rankImage:string
+    rankImage:string,
+    rankedData?:[],
+    message?:string
 }
 
 type FriendItemProps = {
     width:number,
-    dataItem:RiotData
+    dataItem:RiotUserData
 }
 
 type FriendListProps = {
     width:number,
-    friends:[]
 }
 
 type AddFriendsProps = {
     width:number,
-    onPressAddFriend:(data:{})=>void
 }
 
 export { 
@@ -68,5 +68,6 @@ export {
     CurrentRankProps,
     FriendItemProps,
     FriendListProps,
-    AddFriendsProps
+    AddFriendsProps,
+    RiotUserData
 }

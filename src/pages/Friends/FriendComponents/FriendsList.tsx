@@ -1,15 +1,18 @@
 import { View, Text, FlatList, Dimensions, StyleSheet } from 'react-native'
 import { FriendItem } from './FriendItem'
+import { useSelector } from 'react-redux'
+
 import { FriendListProps } from '../../../models/Props'
 
-const FriendsList = ({width, friends}:FriendListProps) =>{
+const FriendsList = ({width}:FriendListProps) =>{
 
     const height = Dimensions.get('window').height * 0.5
-
+    const friends:any = useSelector((state:any)=>{ state.friendsArrayData.friends})
+    console.log(friends)
     return(
         <View style={[{height},styles.friendsList]}>
             {
-                friends.length ? 
+                friends !== undefined ? 
                 (<FlatList 
                     data={friends}
                     renderItem={
