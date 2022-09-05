@@ -7,8 +7,8 @@ import { FriendListProps } from '../../../models/Props'
 const FriendsList = ({width}:FriendListProps) =>{
 
     const height = Dimensions.get('window').height * 0.5
-    const friends:any = useSelector((state:any)=>{ state.friendsArrayData.friends})
-    console.log(friends)
+    const friends:any = useSelector((state:any)=> state.friendsArrayData.friends )
+    
     return(
         <View style={[{height},styles.friendsList]}>
             {

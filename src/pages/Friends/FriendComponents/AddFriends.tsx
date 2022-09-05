@@ -19,8 +19,6 @@ const AddFriends = ({width}:AddFriendsProps) =>{
     const {control, handleSubmit, reset} = useForm()
     const [visible, setVisible] = useState(false)
 
-    // FIXME debug why the setFriends reducer is not saving state
-
     const onPressHandleSubmit = async ({summoner}:any) =>{
         const summonerData:RiotUserData = await getSummoner(summoner)
         if(summonerData.message !== 'Not found'){

@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RiotUserData } from "../../models/Props";
 
 interface FriendsState {
-    friends: RiotUserData[]
+    friends: RiotUserData[],
 }
 
 const initialState:FriendsState = {
-    friends:[]
+    friends:[],
 }
 
-export const friendsSlice = createSlice({
+const friendsSlice = createSlice({
     name:'friendsArrayData',
     initialState,
     reducers:{
