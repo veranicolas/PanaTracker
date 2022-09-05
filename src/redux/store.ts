@@ -10,5 +10,6 @@ export const store = configureStore({
         profileData:profileSlice,
         mainChampionSplash:splashSlice,
         friendsArrayData:friendsSlice
-    }
+    },
+    devTools:true
 })
