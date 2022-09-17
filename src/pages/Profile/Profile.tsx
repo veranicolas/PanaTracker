@@ -18,6 +18,8 @@ export const Profile = ({ navigation }:ProfileProps) =>{
         navigation.navigate('SignUp')
     }
 
+    // TODO add set status for changing the user status
+
     return (
         <View style={styles.mainContainer}>
             <ImageBackground 
@@ -25,13 +27,16 @@ export const Profile = ({ navigation }:ProfileProps) =>{
                 style={[styles.backgroundImage, {height:DEVICE_HEIGHT * 0.3}]}
                 source={{uri:splashData}}
             >  
-                <View style={styles.profileIcon}>
-                    <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%', width:'100%'}}>
+                <View style={{width:'90%', flexDirection:'row', position:'relative',top: 120, left: 5}}>
+                    <View style={styles.profileIcon}>
                         <Image 
-                            style={{height:80, width:80, borderRadius:5}}
+                            style={{height:110, width:110, borderRadius:55}}
                             source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${summonerData.profileIconId}.png`}}
                         />
-                        <Text style={{overflow:'scroll'}}>{summonerData.name}</Text>
+                        <View style={styles.statusBox}>
+                            <Text style={{overflow:'scroll', width:160, textAlign:'center', fontSize:20, fontWeight:'600'}}>{summonerData.name}</Text>
+                            <Text style={{fontSize:14}}>"lmao caballeros"</Text>
+                        </View>
                     </View>
                 </View>
             </ImageBackground>
@@ -64,14 +69,34 @@ const styles = StyleSheet.create({
     },
     profileIcon:{
         height:125, 
-        width:125, 
+        width:290, 
+        paddingHorizontal:10,
+        position:'relative',
         backgroundColor:'white', 
-        flexDirection:'column', 
-        justifyContent:'center',
+        flexDirection:'row', 
+        justifyContent:'space-between',
         alignItems:'center', 
-        borderRadius:12, 
+        borderRadius:60, 
+        borderTopRightRadius:0,
+        borderBottomRightRadius:0,
         marginLeft:10,
-        marginTop:20
+        marginTop:20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.95,
+        shadowRadius: 3.84,
+
+        elevation: 13,
+    },
+    statusBox:{
+        height:'60%', 
+        width:'55%', 
+        flexDirection:'column', 
+        justifyContent:'space-evenly', 
+        alignItems:'center',
     },
     informationContainer:{
         width:'90%', 
