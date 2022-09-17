@@ -20,10 +20,13 @@ const friendsSlice = createSlice({
             state.friends = state.friends.filter((friend:RiotUserData)=>{
                 return friend.id !== action.payload
             })
+        },
+        deleteAllFriends: (state, action?)=>{
+            state.friends = []
         }
     }
 })
 
-export const { setFriends } = friendsSlice.actions
+export const { setFriends, deleteAllFriends } = friendsSlice.actions
 
 export default friendsSlice.reducer
