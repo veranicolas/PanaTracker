@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     profileIcon:{
         height:125, 
-        width:290, 
+        width:355, 
         paddingHorizontal:10,
         position:'relative',
         backgroundColor:'white', 
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     statusBox:{
         height:'60%', 
-        width:'55%', 
+        width:'65%', 
         flexDirection:'column', 
         justifyContent:'space-evenly', 
         alignItems:'center',

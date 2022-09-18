@@ -1,10 +1,22 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 
-import { Shadow } from 'react-native-shadow-2'
 import { CurrentRankProps } from '../../models/Props'
 
 const CurrentRank = ({width}:CurrentRankProps) =>{
+
+    return(
+        <View style={[styles.rankContainer, {width}]}>
+            <Text style={styles.currentRankText}>Current Rank</Text>
+            
+            <View style={{width:'68%', flexDirection:'row'}}>
+                <DataDisplay />
+            </View>
+        </View>
+    )
+}
+
+const DataDisplay = () =>{
 
     const summonerData = useSelector((state:any)=> state.profileData.summonerData)
 
@@ -14,39 +26,42 @@ const CurrentRank = ({width}:CurrentRankProps) =>{
     }
 
     return(
-        <Shadow style={[{width}, styles.shadowBox]}>
-            <View style={styles.rankBox}>
-                <Text style={styles.textShadow}>Current Rank</Text>
-                
-                <View style={{flexDirection:'row', width:'70%', justifyContent:'space-around'}}>
-                    {
-                        rankText !== 'Unranked' ? 
-                            (<>
-                                <Text style={styles.rankText}>{rankText}</Text>
-                                <Image style={styles.rankImage} source={{uri:summonerData.rankImage}} />
-                            </>)
-                        :
-                        (<>
-                                <Text style={styles.rankText}>{rankText}</Text>
-                                <Image resizeMode='stretch' style={{alignSelf:'center', height:45, width:60}} source={{uri:'https://eloboost24.eu/images/divisions/0.webp'}} />
-                        </>)
-                    }
-                    
-                </View>
-            </View>
-        </Shadow>
+        <>
+            {
+                rankText !== 'Unranked' ? 
+                    (<>
+                        <Text style={styles.rankText}>{rankText}</Text>
+                        <Image style={styles.rankImage} source={{uri:summonerData.rankImage}} />
+                    </>)
+                :
+                (<>
+                        <Text style={styles.rankText}>{rankText}</Text>
+                        <Image resizeMode='stretch' style={{alignSelf:'center', height:45, width:60}} source={{uri:'https://eloboost24.eu/images/divisions/0.webp'}} />
+                </>)
+            }
+        </>
     )
 }
 
 const styles = StyleSheet.create({
-    shadowBox:{
-        height:80,
-        borderRadius:12
-    },
-    rankBox:{
+    rankContainer:{
+        height:80, 
+        paddingRight:10,
+        position:'relative',
+        backgroundColor:'white', 
         flexDirection:'row', 
         justifyContent:'space-between',
-        width:'100%'
+        alignItems:'center', 
+        borderRadius:12,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.95,
+        shadowRadius: 3.84,
+
+        elevation: 13,
     },
     rankText:{
         flexDirection:'row',
@@ -54,6 +69,7 @@ const styles = StyleSheet.create({
         textAlign:'right', 
         textAlignVertical:'center', 
         fontSize:32, 
+        height:90,
         width:'65%'
     },
     rankImage:{
@@ -61,9 +77,10 @@ const styles = StyleSheet.create({
         width:'35%', 
         alignSelf:'center'
     },
-    textShadow:{
+    currentRankText:{
         width:'30%',
-        height:80,
+        height:82,
+        marginVertical:5,
         fontSize:20,
         textAlignVertical:'center',
         paddingHorizontal:20,
