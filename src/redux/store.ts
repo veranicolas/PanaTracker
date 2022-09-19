@@ -5,6 +5,7 @@ import splashSlice from "./slices/splashSlice";
 
 // TODO add typescript for redux configs https://redux.js.org/usage/usage-with-typescript
 
+
 export const store = configureStore({
     reducer: {
         profileData:profileSlice,
