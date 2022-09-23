@@ -40,7 +40,7 @@ type RiotUserData = {
     profileIconId:number,
     summonerLevel:number,
     rankImage:string,
-    rankedData?:[],
+    rankedData?:any,
     message?:string
 }
 

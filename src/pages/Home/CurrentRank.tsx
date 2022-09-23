@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 
 import { CurrentRankProps } from '../../models/Props'
+import { sortRankedData } from '../../services/dataModelingL'
 
 const CurrentRank = ({width}:CurrentRankProps) =>{
 
@@ -20,10 +21,7 @@ const DataDisplay = () =>{
 
     const summonerData = useSelector((state:any)=> state.profileData.summonerData)
 
-    let rankText:string = 'Unranked'
-    if(summonerData.rankedData){
-        rankText = `${summonerData.rankedData[0].leaguePoints}LP   ${summonerData.rankedData[0].rank}`
-    }
+    let rankText:string = sortRankedData(summonerData.rankedData)
 
     return(
         <>

@@ -1,25 +1,34 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { FriendItemProps } from '../../../models/Props'
+import { sortRankedData } from '../../../services/dataModelingL'
 
-const FriendItem = ({width, dataItem:{name, profileIconId, rankImage}}:FriendItemProps) =>{
+const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData}}:FriendItemProps) =>{
 
-    const itemWidth = width * 0.97
+    const itemWidth = width * 0.98
+
+    let rankText:string = sortRankedData(rankedData)
 
     return(
         <View style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
-            <Image
-                style={styles.summonerIcon}
-                source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
-            />
-            <Text style={styles.summonerName}>{name}</Text>
+            <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:10}}>
+                <Image
+                    style={styles.summonerIcon}
+                    source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
+                />
+                <Text style={styles.summonerName}>{name}</Text>
+            </View>
+            
             {rankImage ? 
-                (<Image
-                    style={styles.rankImage}
-                    source={{uri:rankImage}}
-                />)
+                (<View style={{flexDirection:'row', width:140, justifyContent:'space-between'}}>
+                    <Text style={{width:60, textAlignVertical:'center', fontWeight:'bold'}}>{rankText}</Text>
+                    <Image
+                        style={styles.rankImage}
+                        source={{uri:rankImage}}
+                    />
+                </View>)
                 :
                 (<Text style={styles.unrankedText}>Unranked</Text>)
-                }
+            }
         </View>
     )
 }
@@ -33,7 +42,7 @@ const styles = StyleSheet.create({
         position:'relative',
         backgroundColor:'white', 
         flexDirection:'row', 
-        justifyContent:'space-evenly',
+        justifyContent:'space-between',
         alignItems:'center', 
         borderRadius:12,
         shadowColor: "#000",
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
     },
     summonerName:{
         height:70, 
-        width:140, 
+        width:100, 
         maxWidth:140, 
         overflow:'scroll', 
         textAlign:'left', 
@@ -71,8 +80,9 @@ const styles = StyleSheet.create({
         height:70, 
         width:90, 
         textAlignVertical:'center', 
-        textAlign:'center', 
+        textAlign:'right', 
         fontWeight:'bold',
+        paddingRight:5,
         color:'black'
     },
     shadow:{
