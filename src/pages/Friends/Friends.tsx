@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start',
         alignItems:'center',
         width:'100%',
-        paddingVertical:50,
+        paddingVertical:10,
         backgroundColor:'#F5F5F5'
     }
 })

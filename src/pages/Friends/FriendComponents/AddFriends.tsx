@@ -1,4 +1,4 @@
-import { View, StyleSheet, Keyboard, Dimensions, Text } from "react-native"
+import { View, StyleSheet, Keyboard, Dimensions, Text, Pressable } from "react-native"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 
@@ -39,14 +39,17 @@ const AddFriends = ({width}:AddFriendsProps) =>{
                 name="summoner"
                 placeholder="Your friend's summoner name"
                 rules={{
-                    required:'You must enter a name'
+                    required:'You must enter a name',
+                    validate:{
+                        empty: (value:string) => value.trim() !== '' || 'You must enter a name',
+                    }
                 }}
                 maxLength={40}
                 inputsStyle={styles.inputFriend}
             />
-            <View style={styles.addFriendButton}>
-                <MaterialIcons onPress={handleSubmit(onPressHandleSubmit)} name="person-add" size={30} color="white" />
-            </View>
+            <Pressable android_ripple={{color:'white'}} onPress={handleSubmit(onPressHandleSubmit)} style={styles.addFriendButton}>
+                <MaterialIcons name="person-add" size={30} color="white" />
+            </Pressable>
             <Modal isVisible={visible}>
                 <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
                     <Text style={{textAlign:'center'}}>Not found</Text>

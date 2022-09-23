@@ -40,6 +40,9 @@ export const Login = ({ navigation }:LoginProps) =>{
                     placeholder="Email"
                     rules={{
                         required:'Email is required.',
+                        validate:{
+                            empty: (value:string) => value.trim() !== '' || 'You must enter an email', 
+                        },
                         pattern:{
                             value: /\S+@\S+\.\S+/,
                             message:'Must be a valid email'
@@ -54,6 +57,9 @@ export const Login = ({ navigation }:LoginProps) =>{
                     secureTextEntry
                     rules={{
                         required:'Password is required', 
+                        validate:{
+                            empty: (value:string) => value.trim() !== '' || 'You must enter an password', 
+                        },
                         minLength:{
                             value:8,
                             message:'Password is too short.'

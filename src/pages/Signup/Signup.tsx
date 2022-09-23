@@ -52,6 +52,9 @@ export const SignUp = ({ navigation }:SignUpProps) => {
                     maxLength={254}
                     rules={{
                         required:'Email is required.',
+                        validate:{
+                            empty: (value:string) => value.trim() !== '' || 'You must enter an email', 
+                        },
                         pattern:{
                             value: /\S+@\S+\.\S+/,
                             message:'Must be a valid email'
@@ -64,11 +67,15 @@ export const SignUp = ({ navigation }:SignUpProps) => {
                     placeholder="Password"
                     secureTextEntry
                     rules={{
-                        required:'Password is required', 
+                        required:'Password is required',
+                        validate:{
+                            empty: (value:string) => value.trim() !== '' || 'You must enter a password', 
+                        }
                         minLength:{
                             value:8,
                             message:'Password is too short.'
-                        }}}
+                        }}},
+                        
                     maxLength={22}
                 /> */}
                 <CustomInput
@@ -76,7 +83,10 @@ export const SignUp = ({ navigation }:SignUpProps) => {
                     name="summoner"
                     placeholder="Summoner name"
                     rules={{
-                        required:'You must link your summoner name.'
+                        required:'You must link your summoner name.',
+                        validate:{
+                            empty: (value:string) => value.trim() !== '' || 'You must enter a name',
+                        }
                     }}
                     maxLength={60}
                 />
