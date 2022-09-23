@@ -30,7 +30,9 @@ type CustomInputProps = {
 
 type CustomButtomProps = {
     onPress:()=> any,
-    title:string
+    title:string,
+    ripple?:string,
+    style?:{}
 }
 
 type RiotUserData = {

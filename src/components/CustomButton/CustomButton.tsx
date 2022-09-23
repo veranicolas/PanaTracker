@@ -2,10 +2,10 @@ import { View, Text, Pressable, StyleSheet} from 'react-native'
 import { CustomButtomProps } from '../../models/Props'
 
 // TODO ADD styles in props and props types
-export const CustomButton = ({onPress, title}:CustomButtomProps) =>{
+export const CustomButton = ({onPress, title, ripple, style}:CustomButtomProps) =>{
     return(
         <View >
-            <Pressable style={styles.button} android_ripple={{color:'white'}} onPress={onPress}>
+            <Pressable style={style ? style : styles.button} android_ripple={{color: ripple ? ripple : 'white'}} onPress={onPress}>
                 <Text style={styles.text}>{title}</Text>
             </Pressable>
         </View>

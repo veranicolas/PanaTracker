@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    summonerData: {}
+    summonerData: {},
+    currentPatch: ''
 }
 
 export const profileSlice = createSlice({
@@ -10,10 +11,13 @@ export const profileSlice = createSlice({
     reducers:{
         setProfile: (state, action) =>{
             state.summonerData = action.payload
+        },
+        setCurrentPatch: (state, action) =>{
+            state.currentPatch = action.payload
         }
     }
 })
 
-export const { setProfile } = profileSlice.actions
+export const { setProfile , setCurrentPatch } = profileSlice.actions
 
 export default profileSlice.reducer

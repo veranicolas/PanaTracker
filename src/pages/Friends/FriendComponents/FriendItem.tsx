@@ -1,19 +1,28 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { FriendItemProps } from '../../../models/Props'
+import { deleteFriend } from '../../../redux/slices/friendsSlice'
 import { sortRankedData } from '../../../services/dataModelingL'
 
-const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData}}:FriendItemProps) =>{
+const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData, id}}:FriendItemProps) =>{
+
+    const currentPatch = useSelector((state:any)=> state.profileData.currentPatch)
+    const dispatch = useDispatch()
 
     const itemWidth = width * 0.98
 
     let rankText:string = sortRankedData(rankedData)
 
+    const onPressDeleteFriend = () => {
+        dispatch(deleteFriend(id))
+    }
+
     return(
-        <View style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
+        <Pressable onPress={onPressDeleteFriend} style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
             <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:10}}>
                 <Image
                     style={styles.summonerIcon}
-                    source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
+                    source={{uri:`http://ddragon.leagueoflegends.com/cdn/${currentPatch}/img/profileicon/${profileIconId}.png`}}
                 />
                 <Text style={styles.summonerName}>{name}</Text>
             </View>
@@ -29,7 +38,7 @@ const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData
                 :
                 (<Text style={styles.unrankedText}>Unranked</Text>)
             }
-        </View>
+        </Pressable>
     )
 }
 

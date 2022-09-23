@@ -10,13 +10,15 @@ const getSummoner = async (summonerName:string) =>{
     } catch(error:any){
         return {...error, message:'Not found'}
     }
-    
 }
 
 const getMainChampionSplash = async (summonerID:string) =>{
 
     const { data } = await axios.get(`${URL}summoner/champion/${summonerID}`)
-    return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`
+    return {
+        splash:`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_0.jpg`,
+        currentPatch: data.version
+    }
 }
 
 export { getSummoner , getMainChampionSplash}

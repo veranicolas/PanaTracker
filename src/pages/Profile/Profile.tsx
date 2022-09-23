@@ -15,8 +15,11 @@ export const Profile = ({ navigation }:ProfileProps) =>{
     const dispatch = useDispatch()
 
     const onLogoutPress = () =>{
-        dispatch(deleteAllFriends(''))
         navigation.navigate('SignUp')
+    }
+
+    const onDeleteAllFriends = () =>{
+        dispatch(deleteAllFriends(''))
     }
 
     // TODO add set status for changing the user status
@@ -42,11 +45,14 @@ export const Profile = ({ navigation }:ProfileProps) =>{
                 </View>
             </ImageBackground>
 
-            <View style={[{height:DEVICE_HEIGHT * 0.55}, styles.informationContainer]}>
-                <View style={{height:'80%', width:'100%'}}>
-
+            <View style={[{height:DEVICE_HEIGHT * 0.45}, styles.informationContainer]}>
+                {/* <View style={{height:'80%', width:'100%'}}>
+                    <CustomButton title="Delete all friends" ripple="red" onPress={onDeleteAllFriends}/>
+                </View> */}
+                
+                <View style={{borderTopWidth:1, borderTopColor:'lightgrey', paddingTop:15}}>
+                    <CustomButton title="Logout" onPress={onLogoutPress}/>
                 </View>
-                <CustomButton title="Logout" onPress={onLogoutPress}/>
             </View>
         </View>
     )
@@ -56,10 +62,10 @@ const styles = StyleSheet.create({
     mainContainer:{
         flex:1,
         flexDirection:'column',
-        justifyContent:'flex-start',
+        justifyContent:'space-between',
         alignItems:'center',
         width:'100%',
-        paddingBottom:50,
+        paddingBottom:25,
         backgroundColor:'#F5F5F5'
     },
     backgroundImage:{

@@ -7,7 +7,7 @@ import Modal from 'react-native-modal'
 import { SignUpProps } from "../../models/Props"
 import { getMainChampionSplash, getSummoner } from "../../services/api"
 import { useDispatch } from "react-redux"
-import { setProfile } from "../../redux/slices/profileSlice"
+import { setCurrentPatch, setProfile } from "../../redux/slices/profileSlice"
 import { setSplash } from "../../redux/slices/splashSlice"
 
 const AppTitle = () =>{
@@ -28,8 +28,9 @@ export const SignUp = ({ navigation }:SignUpProps) => {
     const onPressSignUp = async ({summoner}:any) =>{
         const summonerData = await getSummoner(summoner)
         if(summonerData.message !== 'Not found'){
-            const splashURL = await getMainChampionSplash(summonerData.id)
-            dispatch(setSplash(splashURL))
+            const { splash, currentPatch } = await getMainChampionSplash(summonerData.id)
+            dispatch(setCurrentPatch(currentPatch))
+            dispatch(setSplash(splash))
             dispatch(setProfile(summonerData))
             navigation.navigate('Home')
         } else {
