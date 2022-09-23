@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Login, Profile, Home, SignUp, Friends } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import { getStoredUser } from '../services/storage';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const HomeStack = () =>{
 
@@ -47,31 +50,33 @@ const MainNavigator = () =>{
 
     const Stack = createNativeStackNavigator()
 
+    const summonerData = useSelector((state:any)=> state.profileData.summonerData)
+
     return (
         <NavigationContainer>
-        <Stack.Navigator initialRouteName='SignUp'>
-            <Stack.Screen 
-                name='Login' 
-                component={Login}
-                options={{
-                headerShown:false
-                }}
-            />
-            <Stack.Screen 
-                name='Home'
-                component={HomeStack}
-                options={{
-                headerShown:false
-                }}
-            />
-            <Stack.Screen
-                name='SignUp'
-                component={SignUp}
-                options={{
-                headerShown:false
-                }}
-            />
-        </Stack.Navigator>
+          <Stack.Navigator initialRouteName={summonerData ? 'Home' : 'SignUp'}>
+              <Stack.Screen 
+                  name='Login' 
+                  component={Login}
+                  options={{
+                  headerShown:false
+                  }}
+              />
+              <Stack.Screen 
+                  name='Home'
+                  component={HomeStack}
+                  options={{
+                  headerShown:false
+                  }}
+              />
+              <Stack.Screen
+                  name='SignUp'
+                  component={SignUp}
+                  options={{
+                  headerShown:false
+                  }}
+              />
+          </Stack.Navigator>
         </NavigationContainer>
     );
 }
