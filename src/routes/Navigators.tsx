@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Login, Profile, Home, SignUp, Friends } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
-import { getStoredUser } from '../services/storage';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const HomeStack = () =>{
