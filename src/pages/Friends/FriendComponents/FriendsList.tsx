@@ -35,17 +35,8 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         width:'100%',
+        height:'80%'
     },
-    friendItem:{
-        flexDirection:'row',
-        height:70,
-        borderWidth:1, 
-        borderRadius:12, 
-        alignSelf:'center', 
-        paddingHorizontal:20,
-        marginVertical:5
-    },
-    
 })
 
 export { FriendsList }

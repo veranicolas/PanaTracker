@@ -6,7 +6,7 @@ const FriendItem = ({width, dataItem:{name, profileIconId, rankImage}}:FriendIte
     const itemWidth = width * 0.97
 
     return(
-        <View style={[{width:itemWidth}, styles.friendItem]}>
+        <View style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
             <Image
                 style={styles.summonerIcon}
                 source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${profileIconId}.png`}}
@@ -26,14 +26,25 @@ const FriendItem = ({width, dataItem:{name, profileIconId, rankImage}}:FriendIte
 
 const styles = StyleSheet.create({
     friendItem:{
-        flexDirection:'row',
-        height:70,
-        borderRadius:12, 
-        alignSelf:'center', 
-        justifyContent:'space-between',
-        paddingHorizontal:20,
-        marginVertical:5,
-        backgroundColor:'#07020D'
+        height:80,
+        marginVertical:8, 
+        marginHorizontal: 15,
+        paddingRight:10,
+        position:'relative',
+        backgroundColor:'white', 
+        flexDirection:'row', 
+        justifyContent:'space-evenly',
+        alignItems:'center', 
+        borderRadius:12,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.95,
+        shadowRadius: 3.84,
+
+        elevation: 13
     },
     summonerIcon:{
         height:60, 
@@ -49,7 +60,7 @@ const styles = StyleSheet.create({
         overflow:'scroll', 
         textAlign:'left', 
         textAlignVertical:'center',
-        color:'white'
+        color:'black'
     },
     rankImage:{
         height:90, 
@@ -62,7 +73,18 @@ const styles = StyleSheet.create({
         textAlignVertical:'center', 
         textAlign:'center', 
         fontWeight:'bold',
-        color:'white'
+        color:'black'
+    },
+    shadow:{
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
     }
 })
 
