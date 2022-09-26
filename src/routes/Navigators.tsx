@@ -19,7 +19,8 @@ const HomeStack = () =>{
         component={Home}
         options={{
           headerShown:false,
-          tabBarIcon:()=>(<MaterialIcons name="home" size={24} color="black" />),
+          tabBarIcon:({focused})=>(<MaterialIcons name="home" size={24} color={focused ? 'white' : 'black'} />),
+          tabBarActiveBackgroundColor:'black',
           tabBarShowLabel:false
         }}
       />
@@ -27,8 +28,9 @@ const HomeStack = () =>{
         name='Friends'
         component={Friends}
         options={{
-          tabBarIcon:()=>(<FontAwesome5 name="user-friends" size={24} color="black" />),
-          tabBarShowLabel:false
+          tabBarIcon:({focused})=>(<FontAwesome5 name="user-friends" size={24} color={focused ? 'white' : 'black'} />),
+          tabBarShowLabel:false,
+          tabBarActiveBackgroundColor:'black',
         }}
       />
       <Tab.Screen
@@ -36,8 +38,9 @@ const HomeStack = () =>{
         component={Profile}
         options={{
           headerShown:false,
-          tabBarIcon:()=>(<MaterialIcons name="account-box" size={24} color="black" />),
-          tabBarShowLabel:false
+          tabBarIcon:({focused})=>(<MaterialIcons name="account-box" size={24} color={focused ? 'white' : 'black'} />),
+          tabBarShowLabel:false,
+          tabBarActiveBackgroundColor:'black',
         }}
       />
     </Tab.Navigator>

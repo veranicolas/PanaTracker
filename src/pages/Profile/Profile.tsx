@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Image, ImageBackground, Dimensions } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { Status } from "../../components"
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 import { ProfileProps } from "../../models/Props"
 

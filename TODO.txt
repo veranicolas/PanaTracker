@@ -1,5 +1,10 @@
 
-TODO - Make friends page, with individual pages for your friends via navigate params
+TODO - Make friends page, confirmation to add a friend, and individual pages for your friends via navigate params
 TODO - Show wins and loses within certain dates
 TODO - Change to homepage to contain: MVP, Hotstreak, Most games played in the week, The real MVP(most damage to objectives)
-TODO - Add AsyncStorage with redux-persist
+
+IDEAS
+    - Leaderboard for dumb stuff (wards killed, selfmitigated damage)
+    - Papelonero de la semana (most lost matches in a week)
+    - Preferences page
+    - Refresh buttons
