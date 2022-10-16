@@ -34,7 +34,7 @@ export const Home = ({navigation}:HomeProps) =>{
 
     return(
         <View style={styles.homeContainer}>
-            <HomeHeader onProfilePress={onProfilePress}/>
+            
             <CurrentRank width={windowWidth * 0.97}/>
             <Status style="dark"/>
         </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start',
         alignItems:'center',
         width:'100%',
-        paddingVertical:50,
+        paddingVertical:20,
         backgroundColor:'#F5F5F5'
     },
     textShadow:{

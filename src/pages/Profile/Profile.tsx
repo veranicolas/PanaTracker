@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View, Image, ImageBackground, Dimensions } from "react-native"
+import { useState } from 'react'
+import { StyleSheet, Text, View, Image, ImageBackground, Dimensions, TextInput, Modal } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { CustomButton } from "../../components/CustomButton/CustomButton"
 import { ProfileProps } from "../../models/Props"
 
-import { deleteAllFriends } from "../../redux/slices/friendsSlice"
+import { setStatus } from '../../redux/slices/profileSlice'
+import StatusModal from './StatusModal'
 
 const DEVICE_HEIGHT = Dimensions.get('screen').height
 
 export const Profile = ({ navigation }:ProfileProps) =>{
 
+    const [visible, setVisible] = useState(false)
+    const status = useSelector((state:any)=> state.profileData.status)
     const summonerData = useSelector((state:any)=> state.profileData.summonerData)
     const splashData = useSelector((state:any)=> state.mainChampionSplash.splash)
     const dispatch = useDispatch()
@@ -17,42 +21,44 @@ export const Profile = ({ navigation }:ProfileProps) =>{
         navigation.navigate('SignUp')
     }
 
-    const onDeleteAllFriends = () =>{
-        dispatch(deleteAllFriends(''))
+    const onChangeStatusPress = () =>{
+        setVisible((visible) => !visible)
     }
 
-    // TODO add set status for changing the user status
+    const onDonePress = (text:string) =>{
+        dispatch(setStatus(text))
+        setVisible((visible) => !visible)
+    }
 
     return (
         <View style={styles.mainContainer}>
             <ImageBackground 
                 resizeMode="cover"
-                style={[styles.backgroundImage, {height:DEVICE_HEIGHT * 0.3}]}
+                style={[styles.backgroundImage, {height:DEVICE_HEIGHT * 0.25}]}
                 source={{uri:splashData}}
             >  
                 <View style={{width:'90%', flexDirection:'row', position:'relative',top: 120, left: 5}}>
                     <View style={styles.profileIcon}>
                         <Image 
-                            style={{height:110, width:110, borderRadius:55}}
-                            source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${summonerData.profileIconId}.png`}}
+                            style={{height:90, width:90, borderRadius:3}}
+                            source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.19.1/img/profileicon/${summonerData.profileIconId}.png`}}
                         />
                         <View style={styles.statusBox}>
                             <Text style={{overflow:'scroll', width:160, textAlign:'center', fontSize:20, fontWeight:'600'}}>{summonerData.name}</Text>
-                            <Text style={{fontSize:14}}>"lmao caballeros"</Text>
+                            <Text style={{fontSize:14}}>{status && `"${status}"`}</Text>
                         </View>
                     </View>
                 </View>
             </ImageBackground>
 
-            <View style={[{height:DEVICE_HEIGHT * 0.45}, styles.informationContainer]}>
-                {/* <View style={{height:'80%', width:'100%'}}>
-                    <CustomButton title="Delete all friends" ripple="red" onPress={onDeleteAllFriends}/>
-                </View> */}
-                
+            <View style={[{height:DEVICE_HEIGHT * 0.45}, styles.informationContainer]}>       
+                <CustomButton title="change status" style={{marginBottom:25}} onPress={onChangeStatusPress}/> 
                 <View style={{borderTopWidth:1, borderTopColor:'lightgrey', paddingTop:15}}>
                     <CustomButton title="Logout" onPress={onLogoutPress}/>
                 </View>
             </View>
+
+            <StatusModal visible={visible} onDonePress={onDonePress}/>
         </View>
     )
 }
@@ -74,18 +80,17 @@ const styles = StyleSheet.create({
         alignItems:'flex-start'
     },
     profileIcon:{
-        height:125, 
-        width:355, 
+        height:100, 
+        width:310, 
         paddingHorizontal:10,
         position:'relative',
         backgroundColor:'white', 
         flexDirection:'row', 
         justifyContent:'space-between',
         alignItems:'center', 
-        borderRadius:60, 
-        borderTopRightRadius:0,
-        borderBottomRightRadius:0,
-        marginLeft:10,
+        borderRadius:7,
+        
+        marginLeft:35,
         marginTop:20,
         shadowColor: "#000",
         shadowOffset: {
@@ -105,6 +110,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     informationContainer:{
+        flexDirection:'column',
+        justifyContent:'flex-end',
         width:'90%', 
         padding:20,
         marginTop:10

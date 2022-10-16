@@ -5,8 +5,8 @@ import { CustomButtomProps } from '../../models/Props'
 export const CustomButton = ({onPress, title, ripple, style}:CustomButtomProps) =>{
     return(
         <View >
-            <Pressable style={style ? style : styles.button} android_ripple={{color: ripple ? ripple : 'white'}} onPress={onPress}>
-                <Text style={styles.text}>{title}</Text>
+            <Pressable style={[styles.button, style && style]} android_ripple={{color: ripple ? ripple : 'white'}} onPress={onPress}>
+                <Text style={styles.text}>{title.toUpperCase()}</Text>
             </Pressable>
         </View>
     )
@@ -14,7 +14,7 @@ export const CustomButton = ({onPress, title, ripple, style}:CustomButtomProps) 
 
 const styles = StyleSheet.create({
     button:{
-        backgroundColor:'#212121',
+        backgroundColor:'#07020D',
         borderRadius:10,
         marginTop:10,
         padding:10
@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
         color:'#ffffff',
         textAlign:'center',
         fontWeight:'700',
+        fontSize:13
     }
 })

@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Login, Profile, Home, SignUp, Friends } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 
@@ -10,40 +11,26 @@ const HomeStack = () =>{
 
   // TODO change the navigator for bottomTabsNavigator 
 
-  const Tab = createBottomTabNavigator()
+  const Drawer = createDrawerNavigator()
 
   return(
-    <Tab.Navigator initialRouteName='Feed'>
-      <Tab.Screen
+    <Drawer.Navigator initialRouteName='Feed'>
+      <Drawer.Screen
         name='Feed'
         component={Home}
-        options={{
-          headerShown:false,
-          tabBarIcon:({focused})=>(<MaterialIcons name="home" size={24} color={focused ? 'white' : 'black'} />),
-          tabBarActiveBackgroundColor:'black',
-          tabBarShowLabel:false
-        }}
+        
       />
-      <Tab.Screen 
+      <Drawer.Screen 
         name='Friends'
         component={Friends}
-        options={{
-          tabBarIcon:({focused})=>(<FontAwesome5 name="user-friends" size={24} color={focused ? 'white' : 'black'} />),
-          tabBarShowLabel:false,
-          tabBarActiveBackgroundColor:'black',
-        }}
+        
       />
-      <Tab.Screen
+      <Drawer.Screen
         name='Profile'
         component={Profile}
-        options={{
-          headerShown:false,
-          tabBarIcon:({focused})=>(<MaterialIcons name="account-box" size={24} color={focused ? 'white' : 'black'} />),
-          tabBarShowLabel:false,
-          tabBarActiveBackgroundColor:'black',
-        }}
+        
       />
-    </Tab.Navigator>
+    </Drawer.Navigator>
   )
 }
   
