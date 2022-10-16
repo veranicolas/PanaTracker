@@ -1,11 +1,14 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
+import { useState } from 'react'
+import { View, Text, Image, StyleSheet, Pressable, Modal, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { FriendItemProps } from '../../../models/Props'
 import { deleteFriend } from '../../../redux/slices/friendsSlice'
 import { sortRankedData } from '../../../services/dataModelingL'
+import DeleteFriendModal from './DeleteFriendModal'
 
 const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData, id}}:FriendItemProps) =>{
 
+    const [visible, setVisible] = useState(false)
     const currentPatch = useSelector((state:any)=> state.profileData.currentPatch)
     const dispatch = useDispatch()
 
@@ -13,12 +16,17 @@ const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData
 
     let rankText:string = sortRankedData(rankedData)
 
+    const onChangeVisibility = () =>{
+        setVisible((visibility)=> !visibility)
+    }
+
     const onPressDeleteFriend = () => {
         dispatch(deleteFriend(id))
+        setVisible((visibility)=> !visibility)
     }
 
     return(
-        <Pressable onPress={onPressDeleteFriend} style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
+        <Pressable onLongPress={onChangeVisibility} style={[{width:itemWidth}, styles.friendItem, styles.shadow]}>
             <View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:10}}>
                 <Image
                     style={styles.summonerIcon}
@@ -38,6 +46,7 @@ const FriendItem = ({width, dataItem:{name, profileIconId, rankImage, rankedData
                 :
                 (<Text style={styles.unrankedText}>Unranked</Text>)
             }
+            <DeleteFriendModal visible={visible} onChangeVisibility={onChangeVisibility} onPressDeleteFriend={onPressDeleteFriend}/>
         </Pressable>
     )
 }

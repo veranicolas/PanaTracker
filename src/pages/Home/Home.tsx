@@ -15,7 +15,7 @@ const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
                 <View style={{height:49, width:49, marginHorizontal:5, backgroundColor:'black', borderRadius:25}}>
                     <Image 
                         style={{height:45, width:45, borderRadius:25, alignSelf:'center', marginVertical:2}}
-                        source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.16.1/img/profileicon/${summonerData.profileIconId}.png`}}
+                        source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.19.1/img/profileicon/${summonerData.profileIconId}.png`}}
                     />
                 </View>
             </Pressable>

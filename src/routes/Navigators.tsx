@@ -2,14 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Login, Profile, Home, SignUp, Friends } from '../pages';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 
 const HomeStack = () =>{
-
-  // TODO change the navigator for bottomTabsNavigator 
 
   const Drawer = createDrawerNavigator()
 
@@ -18,17 +14,14 @@ const HomeStack = () =>{
       <Drawer.Screen
         name='Feed'
         component={Home}
-        
       />
       <Drawer.Screen 
         name='Friends'
         component={Friends}
-        
       />
       <Drawer.Screen
         name='Profile'
         component={Profile}
-        
       />
     </Drawer.Navigator>
   )
