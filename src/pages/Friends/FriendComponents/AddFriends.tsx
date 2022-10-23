@@ -1,10 +1,9 @@
-import { View, StyleSheet, Keyboard, Dimensions, Text, Pressable } from "react-native"
-import { useState } from "react"
+import { View, StyleSheet, Keyboard, Dimensions, Text, Pressable, Modal } from "react-native"
+import { useState } from 'react'
 import { useDispatch } from "react-redux"
 
 import { MaterialIcons } from "@expo/vector-icons"
 import { useForm } from "react-hook-form"
-import Modal from 'react-native-modal'
 
 import { AddFriendsProps, RiotUserData } from "../../../models/Props"
 import { CustomButton, CustomInput } from "../../../components"
@@ -50,7 +49,7 @@ const AddFriends = ({width}:AddFriendsProps) =>{
             <Pressable android_ripple={{color:'white'}} onPress={handleSubmit(onPressHandleSubmit)} style={styles.addFriendButton}>
                 <MaterialIcons name="person-add" size={30} color="white" />
             </Pressable>
-            <Modal isVisible={visible}>
+            <Modal visible={visible}>
                 <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
                     <Text style={{textAlign:'center'}}>Not found</Text>
                     <CustomButton title="OK" onPress={()=>setVisible(false)}/>

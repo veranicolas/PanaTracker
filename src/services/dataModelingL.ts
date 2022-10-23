@@ -15,4 +15,13 @@ const sortRankedData = (rankedData: any[]):any =>{
     }
 }
 
-export { sortRankedData }
+const getFriendsIDs = (friends:any[]) =>{
+
+    const friendsIDs = friends.map((friend)=>{
+        return friend.puuid
+    })
+
+    return friendsIDs
+}
+
+export { sortRankedData, getFriendsIDs }

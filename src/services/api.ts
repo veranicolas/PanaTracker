@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios"
 
-const URL =  process.env.BE_URL || 'https://pana-tracker.fly.dev/' // pay attention to changes in wifi
+const URL = process.env.BE_URL || 'https://pana-tracker.fly.dev/' // pay attention to changes in wifi
 
 const getSummoner = async (summonerName:string) =>{
 
@@ -21,4 +21,21 @@ const getMainChampionSplash = async (summonerID:string) =>{
     }
 }
 
-export { getSummoner , getMainChampionSplash}
+const getUpdatedFriends = async (friendsIDs:any[]) =>{
+
+    try{
+        const { data } = await axios.post(`${URL}sumonner/friends`, friendsIDs, 
+        {
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        return {
+            friends:data
+        }
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export { getSummoner , getMainChampionSplash, getUpdatedFriends }

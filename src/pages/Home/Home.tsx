@@ -1,9 +1,12 @@
 import { Text, View, StyleSheet, Dimensions, Image, Pressable } from "react-native"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { HomeHeaderProps, HomeProps } from "../../models/Props";
 import { Status } from "../../components";
 import { CurrentRank } from "./CurrentRank";
+import { useEffect } from "react";
+import { getSummoner } from "../../services/api";
+import { setProfile } from "../../redux/slices/profileSlice";
 
 const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
 
@@ -26,15 +29,17 @@ const HomeHeader = ({onProfilePress}:HomeHeaderProps) => {
 
 export const Home = ({navigation}:HomeProps) =>{
 
+    const summonerData = useSelector((state:any)=> state.profileData.summonerData)
     const windowWidth = Dimensions.get('window').width * 0.9
+    const dispatch = useDispatch()
 
-    const onProfilePress = () =>{
-        navigation.navigate('Profile')
-    }
+    useEffect(()=>{
+        const updatedData = getSummoner(summonerData.name)
+        dispatch(setProfile(updatedData))
+    },[])
 
     return(
         <View style={styles.homeContainer}>
-            
             <CurrentRank width={windowWidth * 0.97}/>
             <Status style="dark"/>
         </View>
