@@ -26,9 +26,21 @@ const StatusModal = ({visible, onDonePress}:any) => {
 }
 
 const styles = StyleSheet.create({
-    modalContainer:{height:'100%', width:'100%', backgroundColor:'rgba(0, 0, 0, 0.5)'},
-    modalBox:{height:120, width:300, backgroundColor:'white', padding:20, position:'absolute', top:DEVICE_HEIGHT * 0.4, alignSelf:'center'},
-    textInput:{borderWidth:1,borderColor:'black', fontSize:10, width:'90%', paddingLeft:10}
+    modalContainer:{
+        height:'100%', 
+        width:'100%', 
+        backgroundColor:'rgba(0, 0, 0, 0.5)'
+    },
+    modalBox:{
+        height:120, 
+        width:300, 
+        backgroundColor:'white', 
+        padding:20, 
+        position:'absolute', 
+        top:DEVICE_HEIGHT * 0.4, 
+        alignSelf:'center'
+    },
+    textInput:{borderWidth:1, borderRadius:7, borderColor:'black', fontSize:12, width:'100%', paddingLeft:10}
 })
 
 export default StatusModal;
