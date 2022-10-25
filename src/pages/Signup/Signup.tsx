@@ -26,14 +26,19 @@ export const SignUp = ({ navigation }:SignUpProps) => {
     const { control, handleSubmit } = useForm()
 
     const onPressSignUp = async ({summoner}:any) =>{
-        const summonerData = await getSummoner(summoner)
-        if(summonerData.message !== 'Not found'){
-            const { splash, currentPatch } = await getMainChampionSplash(summonerData.id)
-            dispatch(setCurrentPatch(currentPatch))
-            dispatch(setSplash(splash))
-            dispatch(setProfile(summonerData))
-            navigation.navigate('Home')
-        } else {
+        try{
+            const summonerData = await getSummoner(summoner)
+            if(summonerData.message !== 'Not found'){
+                const { splash, currentPatch } = await getMainChampionSplash(summonerData.id)
+                dispatch(setCurrentPatch(currentPatch))
+                dispatch(setSplash(splash))
+                dispatch(setProfile(summonerData))
+                navigation.navigate('Home')
+            } else {
+                throw Error('Not found')
+            }
+        } catch(error){
+            console.log(error)
             setVisible(true)
         }
     }

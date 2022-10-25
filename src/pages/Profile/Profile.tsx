@@ -41,7 +41,7 @@ export const Profile = ({ navigation }:ProfileProps) =>{
                     <View style={styles.profileIcon}>
                         <Image 
                             style={{height:90, width:90, borderRadius:3}}
-                            source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.19.1/img/profileicon/${summonerData.profileIconId}.png`}}
+                            source={{uri:`http://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${summonerData.profileIconId}.png`}}
                         />
                         <View style={styles.statusBox}>
                             <Text style={{overflow:'scroll', width:160, textAlign:'center', fontSize:20, fontWeight:'600'}}>{summonerData.name}</Text>

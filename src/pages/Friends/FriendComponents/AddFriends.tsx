@@ -25,6 +25,7 @@ const AddFriends = ({width}:AddFriendsProps) =>{
             Keyboard.dismiss()
             reset()
         } else {
+            console.log(summonerData)
             Keyboard.dismiss()
             setVisible(true)
             reset()

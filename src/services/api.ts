@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios"
 
-const URL = process.env.BE_URL || 'https://pana-tracker.fly.dev/' // pay attention to changes in wifi
+const URL = 'http://192.168.0.181:3000/' || 'https://pana-tracker.fly.dev/' // pay attention to changes in wifi
 
 const getSummoner = async (summonerName:string) =>{
 
