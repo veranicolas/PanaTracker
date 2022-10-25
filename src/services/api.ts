@@ -21,17 +21,12 @@ const getMainChampionSplash = async (summonerID:string) =>{
     }
 }
 
-const getUpdatedFriends = async (friendsIDs:any[]) =>{
+const getUpdatedFriends = async (ids:any[]) =>{
 
     try{
-        const { data } = await axios.post(`${URL}sumonner/friends`, friendsIDs, 
-        {
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
+        const { data } = await axios.post(`${URL}summoner/friends`, {friendsIDs:ids})
         return {
-            friends:data
+            data
         }
     } catch(error){
         console.log(error)

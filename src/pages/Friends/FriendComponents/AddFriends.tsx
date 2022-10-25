@@ -1,19 +1,21 @@
 import { View, StyleSheet, Keyboard, Dimensions, Text, Pressable, Modal } from "react-native"
 import { useState } from 'react'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { MaterialIcons } from "@expo/vector-icons"
 import { useForm } from "react-hook-form"
 
 import { AddFriendsProps, RiotUserData } from "../../../models/Props"
 import { CustomButton, CustomInput } from "../../../components"
-import { setFriends } from "../../../redux/slices/friendsSlice"
-import { getSummoner } from "../../../services/api"
+import { addFriend, updateFriends } from "../../../redux/slices/friendsSlice"
+import { getSummoner, getUpdatedFriends } from "../../../services/api"
+import { getFriendsIDs } from "../../../services/dataModelingL"
 
 
 const AddFriends = ({width}:AddFriendsProps) =>{
 
     const dispatch = useDispatch()
+    const friends:any[] = useSelector((state:any)=> state.friendsArrayData.friends)
 
     const {control, handleSubmit, reset} = useForm()
     const [visible, setVisible] = useState(false)
@@ -21,7 +23,7 @@ const AddFriends = ({width}:AddFriendsProps) =>{
     const onPressHandleSubmit = async ({summoner}:any) =>{
         const summonerData:RiotUserData = await getSummoner(summoner)
         if(summonerData.message !== 'Not found'){
-            dispatch(setFriends(summonerData))
+            dispatch(addFriend(summonerData))
             Keyboard.dismiss()
             reset()
         } else {
@@ -30,6 +32,12 @@ const AddFriends = ({width}:AddFriendsProps) =>{
             setVisible(true)
             reset()
         }
+    }
+
+    const onPressReloadFriends = async () =>{
+        const ids = getFriendsIDs(friends)
+        const response = await getUpdatedFriends(ids)
+        dispatch(updateFriends(response?.data.data))
     }
 
     return(
@@ -49,6 +57,9 @@ const AddFriends = ({width}:AddFriendsProps) =>{
             />
             <Pressable android_ripple={{color:'white'}} onPress={handleSubmit(onPressHandleSubmit)} style={styles.addFriendButton}>
                 <MaterialIcons name="person-add" size={30} color="white" />
+            </Pressable>
+            <Pressable android_ripple={{color:'white'}} onPress={onPressReloadFriends} style={styles.addFriendButton}>
+                <MaterialIcons name="360" size={30} color="white" />
             </Pressable>
             <Modal visible={visible}>
                 <View style={{width:300, height:100, backgroundColor:'white', alignSelf:'center', borderRadius:8, padding:15}}>
@@ -80,7 +91,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     inputFriend:{
-        width: Dimensions.get('screen').width * 0.74,
+        width: Dimensions.get('screen').width * 0.60,
         height: 38,
         backgroundColor:'white',
         borderRadius:5,
